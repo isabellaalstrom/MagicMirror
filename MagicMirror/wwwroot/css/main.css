@@ -1,4 +1,12 @@
-﻿body {
+﻿#dateTimeModule #time {
+  font-size: 120px; }
+
+#dateTimeModule #date {
+  font-size: 40px; }
+
+body {
+  /*width: 1080px;
+    height: 1920px;*/
   background-color: black;
   color: white;
   padding-top: 30px; }
