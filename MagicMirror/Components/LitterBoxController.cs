@@ -42,7 +42,7 @@ namespace MagicMirror.Components
                     return Ok(new
                     {
                         //TODO Friendly name from Attributes
-                        //
+                        //TODO ev unit_of_measurement
                         //EntityId = rawLitterBoxVisit.EntityId,
                         //LastChanged = rawLitterBoxVisit.LastChanged,
                         //LastUpdated = rawLitterBoxVisit.LastUpdated,
