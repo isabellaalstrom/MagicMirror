@@ -1,0 +1,27 @@
+﻿body {
+  background-color: black;
+  color: white;
+  padding-top: 30px; }
+
+#mirrorSection div {
+  /*height: 300px;*/
+  font-size: x-large; }
+
+#mirrorSection #dateTimemodule {
+  height: 300px; }
+
+#mirrorSection #currentWeatherModule {
+  height: 300px; }
+
+#mirrorSection #calendarModule {
+  height: 300px; }
+
+#mirrorSection #forecastModule {
+  height: 300px; }
+
+#mirrorSection #trafficModule {
+  height: 300px; }
+
+#mirrorSection #hassModule {
+  height: 300px; }
+
