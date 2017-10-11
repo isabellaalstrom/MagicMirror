@@ -1,9 +1,19 @@
-﻿#dateTimeModule #time {
-  font-size: 120px; }
+﻿@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+#dateTimeModule #time {
+  font-size: 130px; }
 
 #dateTimeModule #date {
   font-size: 40px; }
 
+body {
+  font-family: "Roboto Condensed", serif;
+  font-weight: normal; }
+
+/*h1, h2, h3, h4, h5, h6 {
+    font-family: $roboto-condensed;
+    font-weight: normal;
+    }
+*/
 body {
   /*width: 1080px;
     height: 1920px;*/
@@ -22,14 +32,14 @@ body {
   height: 300px; }
 
 #mirrorSection #calendarModule {
-  height: 300px; }
+  height: 200px; }
 
 #mirrorSection #forecastModule {
-  height: 300px; }
+  height: 200px; }
 
 #mirrorSection #trafficModule {
-  height: 300px; }
+  height: 200px; }
 
 #mirrorSection #hassModule {
-  height: 300px; }
+  height: 200px; }
 

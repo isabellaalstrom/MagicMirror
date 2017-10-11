@@ -1,5 +1,5 @@
 ﻿@import "clock";
-
+@import "fonts";
 body {
     /*width: 1080px;
     height: 1920px;*/
@@ -23,18 +23,18 @@ body {
     }
 
     #calendarModule {
-        height: 300px;
+        height: 200px;
     }
 
     #forecastModule {
-        height: 300px;
+        height: 200px;
     }
 
     #trafficModule {
-        height: 300px;
+        height: 200px;
     }
 
     #hassModule {
-        height: 300px;
+        height: 200px;
     }
 }
