@@ -33,7 +33,7 @@ namespace MagicMirror.Components
                     var entityId = "sensor.downstairs_litter_box_visits";
                     var apiPassword = Configuration["ApiPassword"];
 
-                    client.BaseAddress = new Uri("http://hassbian.local:8123");
+                    client.BaseAddress = new Uri("http://grimsan.servebeer.com:8123");
                     var response = await client.GetAsync($"/api/states/{entityId}?api_password={apiPassword}");
                     response.EnsureSuccessStatusCode();
 
@@ -41,6 +41,8 @@ namespace MagicMirror.Components
                     var rawLitterBoxVisit = JsonConvert.DeserializeObject<LitterBoxVisit>(stringResult);
                     return Ok(new
                     {
+                        //TODO Friendly name from Attributes
+                        //
                         //EntityId = rawLitterBoxVisit.EntityId,
                         //LastChanged = rawLitterBoxVisit.LastChanged,
                         //LastUpdated = rawLitterBoxVisit.LastUpdated,
@@ -54,29 +56,29 @@ namespace MagicMirror.Components
             }
         }
 
-        // GET: api/LitterBox/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
-        {
-            return "value";
-        }
+        //// GET: api/LitterBox/5
+        //[HttpGet("{id}", Name = "Get")]
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
         
-        // POST: api/LitterBox
-        [HttpPost]
-        public void Post([FromBody]string value)
-        {
-        }
+        //// POST: api/LitterBox
+        //[HttpPost]
+        //public void Post([FromBody]string value)
+        //{
+        //}
         
-        // PUT: api/LitterBox/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+        //// PUT: api/LitterBox/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody]string value)
+        //{
+        //}
         
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //// DELETE: api/ApiWithActions/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }
