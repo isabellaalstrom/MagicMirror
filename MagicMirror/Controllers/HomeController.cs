@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MagicMirror.Models;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+
 
 namespace MagicMirror.Controllers
 {
@@ -21,6 +25,7 @@ namespace MagicMirror.Controllers
 
         public IActionResult Index()
         {
+            //GetEntityState("sensor.downstairs_litter_box_visits");
             return View();
         }
 

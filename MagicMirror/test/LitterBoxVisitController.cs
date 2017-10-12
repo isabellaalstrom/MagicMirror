@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using MagicMirror.Models;
@@ -9,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
-namespace MagicMirror.Components
+namespace MagicMirror.test
 {
     [Produces("application/json")]
     [Route("api/LitterBox")]
@@ -30,7 +32,7 @@ namespace MagicMirror.Components
             {
                 try
                 {
-                    var entityId = "sensor.downstairs_litter_box_visits";
+                    var entityId = "sensor.downstairs_litter_box";
                     var apiPassword = Configuration["ApiPassword"];
 
                     client.BaseAddress = new Uri("http://grimsan.servebeer.com:8123");
@@ -38,7 +40,7 @@ namespace MagicMirror.Components
                     response.EnsureSuccessStatusCode();
 
                     var stringResult = await response.Content.ReadAsStringAsync();
-                    var rawLitterBoxVisit = JsonConvert.DeserializeObject<LitterBoxVisit>(stringResult);
+                    var rawLitterBoxVisit = JsonConvert.DeserializeObject<LitterBoxVisitResponse>(stringResult);
                     return Ok(new
                     {
                         //TODO Friendly name from Attributes

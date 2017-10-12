@@ -44,26 +44,26 @@ $(document).ready(function () {
 
 
 
-//API TEST
-    $(document).ready(function () {
-        $.ajax({
-            type: "GET",
-            url: "/api/LitterBox",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data) {
-                //alert(JSON.stringify(data));                  
-                console.log(data.state);
-                $("#DIV").html(data.state);
-                console.log(data);
-            }, //End of AJAX Success function  
+////API TEST
+//    $(document).ready(function () {
+//        $.ajax({
+//            type: "GET",
+//            url: "/api/LitterBox",
+//            contentType: "application/json; charset=utf-8",
+//            dataType: "json",
+//            success: function (data) {
+//                //alert(JSON.stringify(data));                  
+//                console.log(data.state);
+//                $("#DIV").html(data.state);
+//                console.log(data);
+//            }, //End of AJAX Success function  
 
-            failure: function (data) {
-                alert("fail "+data.responseText);
-            }, //End of AJAX failure function  
-            error: function (data) {
-                alert("error " + data.responseText);
-            } //End of AJAX error function  
+//            failure: function (data) {
+//                alert("fail "+data.responseText);
+//            }, //End of AJAX failure function  
+//            error: function (data) {
+//                alert("error " + data.responseText);
+//            } //End of AJAX error function  
 
-        });         
-    });
+//        });         
+//    });

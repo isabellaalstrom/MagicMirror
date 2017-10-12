@@ -7,9 +7,6 @@ namespace MagicMirror.Models
 {
     public class LitterBoxVisit
     {
-        public string EntityId { get; set; }
-        public string LastChanged { get; set; }
-        public string LastUpdated { get; set; }
         public string State { get; set; }
     }
 }
