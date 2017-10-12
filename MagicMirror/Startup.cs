@@ -33,6 +33,8 @@ namespace MagicMirror
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddSingleton<IHassService, HassService>();
+
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
