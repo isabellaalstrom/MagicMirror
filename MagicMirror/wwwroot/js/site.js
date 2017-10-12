@@ -55,14 +55,6 @@ $(document).ready(function () {
                 //alert(JSON.stringify(data));                  
                 console.log(data.state);
                 $("#DIV").html(data.state);
-                //var DIV = '';
-                //$.each(data, function (i, item) {
-                    
-                //    var rows = "<tr>" +
-                //        "<td id='State'>" + item.state + "</td>" +
-                //        "</tr>";
-                //    $('#Table').append(rows);
-                /*});*/ //End of foreach Loop   
                 console.log(data);
             }, //End of AJAX Success function  
 
