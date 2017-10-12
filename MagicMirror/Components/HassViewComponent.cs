@@ -28,6 +28,7 @@ namespace MagicMirror.Components
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var result = await _hassService.GetAllDoorEntitiesAsync();
+
             //await _hassService.GetEntityStateAsync("sensor.downstairs_litter_box_visits");
             //await _hassService.GetStatesAsync();
 

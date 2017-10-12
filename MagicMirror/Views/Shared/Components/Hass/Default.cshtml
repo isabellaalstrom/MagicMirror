@@ -1,9 +1,41 @@
 ﻿@model IEnumerable<HassEntity>
 
 <div>
-    @foreach (var door in Model)
-    {
-        <div>@door.Attributes.FriendlyName : @door.State</div>
-        <div>Last changed: @door.LastChanged.ToString("g")</div>
+   
+    @if (Model.Any(x => x.State == "Open"))
+    { 
+        <h4 class="text-danger">Open:</h4>
+        foreach (var door in Model)
+        {
+            if (door.State == "Open")
+            {
+                <h6>@door.Attributes.FriendlyName, Last update: @door.LastUpdated</h6>
+            }
+        }
     }
+
+    @if (Model.Any(x => x.State == "Closed"))
+    {
+        <h4>Closed:</h4>
+        foreach (var door in Model)
+        {
+            if (door.State == "Closed")
+            {
+                <h6>@door.Attributes.FriendlyName, Last update: @door.LastUpdated</h6>
+            }
+        }
+    }
+    @if (Model.Any(x => x.State == "Unknown"))
+    {
+        <h4 class="text-danger">Unknown:</h4>
+        foreach (var door in Model)
+        {
+            if (door.State == "Unknown")
+            {
+                <h6>@door.Attributes.FriendlyName, Last update: @door.LastUpdated</h6>
+            }
+
+        }
+    }
+
 </div>
