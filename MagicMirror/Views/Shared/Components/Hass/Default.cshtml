@@ -1,4 +1,9 @@
-﻿@model MagicMirror.Models.HassEntity
+﻿@model IEnumerable<HassEntity>
 
-<div>Downstairs Litterbox Visits: @Model.State
+<div>
+    @foreach (var door in Model)
+    {
+        <div>@door.Attributes.FriendlyName : @door.State</div>
+        <div>Last changed: @door.LastChanged.ToString("g")</div>
+    }
 </div>

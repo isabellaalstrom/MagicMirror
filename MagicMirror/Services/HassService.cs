@@ -33,11 +33,6 @@ namespace MagicMirror.Services
             StreamReader reader = new StreamReader(dataStream);
             string responseFromServer = await reader.ReadToEndAsync();
             var entity = JsonConvert.DeserializeObject<HassEntity>(responseFromServer);
-            //var entity = new HassEntity
-            //{
-            //    EntityId = rawResponse.EntityId,
-            //    State = rawResponse.State
-            //};
 
             return entity;
         }
@@ -57,6 +52,13 @@ namespace MagicMirror.Services
             var entities = JsonConvert.DeserializeObject<IEnumerable<HassEntity>>(responseFromServer).ToList();
 
             return entities;
+        }
+
+        public async Task<IEnumerable<HassEntity>> GetAllDoorEntitiesAsync()
+        {
+            var allEntities = await GetStatesAsync();
+            var doors = allEntities.Where(x => x.EntityId.StartsWith("sensor.") && x.EntityId.EndsWith("door")).ToList();
+            return doors;
         }
     }
 }

@@ -13,9 +13,9 @@ namespace MagicMirror.Models
         [JsonProperty("entity_id")]
         public string EntityId { get; set; }
         [JsonProperty("last_changed")]
-        public string LastChanged { get; set; }
+        public DateTime LastChanged { get; set; }
         [JsonProperty("last_updated")]
-        public string LastUpdated { get; set; }
+        public DateTime LastUpdated { get; set; }
         [JsonProperty("state")]
         public string State { get; set; }
     }

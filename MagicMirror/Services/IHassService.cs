@@ -11,5 +11,6 @@ namespace MagicMirror.Services
 
         Task<HassEntity> GetEntityStateAsync(string entityId);
         Task<IEnumerable<HassEntity>> GetStatesAsync();
+        Task<IEnumerable<HassEntity>> GetAllDoorEntitiesAsync();
     }
 }

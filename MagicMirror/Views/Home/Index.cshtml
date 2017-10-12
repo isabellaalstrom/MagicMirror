@@ -4,19 +4,18 @@
             <span id="date"></span>
             <span id="time"></span>
         </div> 
-        <div id="calendarModule" class="">Calendar Module</div> 
-        <div id="todoListModule" class="">TODO-List Module</div>
+        <div id="calendarModule" class=""><h2>Calendar Module</h2></div> 
+        <div id="todoListModule" class=""><h2>TODO-List Module</h2></div>
     </div>
 
     <div id="rightSection" class="col-md-offset-4 col-md-3">
-        <div id="currentWeatherModule" class="">Current Weather Module</div>
-        <div id="forecastModule" class="">Forecast Module</div>
-        <div id="trafficModule" class="">Traffic Module</div>
+        <div id="currentWeatherModule" class=""><h2>Current Weather Module</h2></div>
+        <div id="forecastModule" class=""><h2>Forecast Module</h2></div>
+        <div id="trafficModule" class=""><h2>Traffic Module</h2></div>
     </div>
 
     <div id="bottomSection" class="navbar-fixed-bottom">
         <div id="hassModule" class="col-md-12">
-            Home Assistant Module
             @await Component.InvokeAsync("Hass")
             <div>@*Downstairs Litterbox Visits: <span id="DIV"></span>*@
             </div>
