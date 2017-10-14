@@ -18,11 +18,15 @@ namespace MagicMirror.Models
         public DateTime LastUpdated { get; set; }
         [JsonProperty("state")]
         public string State { get; set; }
+        [JsonProperty("message")]
+        public string Message { get; set; }
     }
 
     public class EntityAttribute
     {
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; set; }
+        [JsonProperty("entity_id")]
+        public string[] EntityIds { get; set; }
     }
 }

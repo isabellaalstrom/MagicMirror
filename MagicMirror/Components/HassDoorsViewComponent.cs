@@ -13,25 +13,18 @@ using Newtonsoft.Json;
 
 namespace MagicMirror.Components
 {
-    public class HassViewComponent : ViewComponent
+    public class HassDoorsViewComponent : ViewComponent
     {
         private readonly IHassService _hassService;
 
-        public IConfiguration Configuration { get; set; }
-
-        public HassViewComponent(IConfiguration config, IHassService hassService)
+        public HassDoorsViewComponent(IHassService hassService)
         {
-            Configuration = config; //To use: Configuration["nameOfMySecret"]
             _hassService = hassService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var result = await _hassService.GetAllDoorEntitiesAsync();
-
-            //await _hassService.GetEntityStateAsync("sensor.downstairs_litter_box_visits");
-            //await _hassService.GetStatesAsync();
-
             return View(result);
         }
     }

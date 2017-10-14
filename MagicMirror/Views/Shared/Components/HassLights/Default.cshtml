@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MagicMirror.Models.HassEntity>
+
+<div>
+
+    @if (Model.Any(x => x.State.ToLower() == "on"))
+    {
+        <h4 class="">On:</h4>
+        foreach (var light in Model)
+        {
+            if (light.State.ToLower() == "on")
+            {
+                <h6>@light.Attributes.FriendlyName, Last update: @light.LastUpdated</h6>
+            }
+        }
+    }
+
+    @if (Model.Any(x => x.State.ToLower() == "off"))
+    {
+        <h4>Closed:</h4>
+        foreach (var door in Model)
+        {
+            if (door.State.ToLower() == "off")
+            {
+                <h6>@door.Attributes.FriendlyName, Last update: @door.LastUpdated</h6>
+            }
+        }
+    }
+    @if (Model.Any(x => x.State.ToLower() == "unknown"))
+    {
+        <h4 class="text-danger">Unknown:</h4>
+        foreach (var door in Model)
+        {
+            if (door.State.ToLower() == "unknown")
+            {
+                <h6>@door.Attributes.FriendlyName, Last update: @door.LastUpdated</h6>
+            }
+
+        }
+    }
+
+</div>

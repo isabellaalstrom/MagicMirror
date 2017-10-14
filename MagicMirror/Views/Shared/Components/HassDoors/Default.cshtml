@@ -2,35 +2,35 @@
 
 <div>
    
-    @if (Model.Any(x => x.State == "Open"))
+    @if (Model.Any(x => x.State.ToLower() == "open"))
     { 
         <h4 class="text-danger">Open:</h4>
         foreach (var door in Model)
         {
-            if (door.State == "Open")
+            if (door.State.ToLower() == "Open")
             {
                 <h6>@door.Attributes.FriendlyName, Last update: @door.LastUpdated</h6>
             }
         }
     }
 
-    @if (Model.Any(x => x.State == "Closed"))
+    @if (Model.Any(x => x.State.ToLower() == "closed"))
     {
         <h4>Closed:</h4>
         foreach (var door in Model)
         {
-            if (door.State == "Closed")
+            if (door.State.ToLower() == "closed")
             {
                 <h6>@door.Attributes.FriendlyName, Last update: @door.LastUpdated</h6>
             }
         }
     }
-    @if (Model.Any(x => x.State == "Unknown"))
+    @if (Model.Any(x => x.State.ToLower() == "unknown"))
     {
         <h4 class="text-danger">Unknown:</h4>
         foreach (var door in Model)
         {
-            if (door.State == "Unknown")
+            if (door.State.ToLower() == "unknown")
             {
                 <h6>@door.Attributes.FriendlyName, Last update: @door.LastUpdated</h6>
             }

@@ -8,9 +8,9 @@ namespace MagicMirror.Services
 {
     public interface IHassService
     {
-
         Task<HassEntity> GetEntityStateAsync(string entityId);
         Task<IEnumerable<HassEntity>> GetStatesAsync();
         Task<IEnumerable<HassEntity>> GetAllDoorEntitiesAsync();
+        Task<IEnumerable<HassEntity>> GetGroupEntitiesAsync(string groupId);
     }
 }
