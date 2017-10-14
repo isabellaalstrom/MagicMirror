@@ -41,7 +41,7 @@ namespace MagicMirror.Services
             catch (Exception ex)
             {
                 Console.WriteLine("Exception thrown = " + ex);
-                return new HassEntity{EntityId = Message = "There's been an error getting this entity"};
+                return new HassEntity{EntityId = entityId, Message = "There's been an error getting this entity"};
             }
         }
 
