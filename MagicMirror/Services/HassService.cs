@@ -25,6 +25,7 @@ namespace MagicMirror.Services
 
             Configuration = config; //To use: Configuration["nameOfMySecret"]
             _client = client;
+            _client.BaseAddress = new Uri("http://grimsan.servebeer.com:8123");
         }
         //public async Task<HassEntity> GetEntityStateAsync(string entityId)
         //{
@@ -57,7 +58,6 @@ namespace MagicMirror.Services
                 try
                 {
                     var apiPassword = Configuration["ApiPassword"];
-                    _client.BaseAddress = new Uri("http://grimsan.servebeer.com:8123");
                     var response = await _client.GetAsync($"/api/states/{entityId}?api_password={apiPassword}");
                     response.EnsureSuccessStatusCode();
 
