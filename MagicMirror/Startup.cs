@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -34,6 +35,7 @@ namespace MagicMirror
                 .AddDefaultTokenProviders();
 
             services.AddSingleton<IHassService, HassService>();
+            services.AddSingleton<HttpClient>();
 
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
