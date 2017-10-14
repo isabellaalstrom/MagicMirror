@@ -15,87 +15,37 @@ namespace MagicMirror.Services
 {
     public class HassService : IHassService
     {
+        private const string baseUrl = "http://grimsan.servebeer.com:8123";
+
         private readonly HttpClient _client;
+        private readonly IConfiguration _configuration;
 
-        public IConfiguration Configuration { get; set; }
 
-
-        public HassService(IConfiguration config, HttpClient client)
+        public HassService(IConfiguration config)
         {
+            _configuration = config;
+            _client = new HttpClient {BaseAddress = new Uri(baseUrl)};
 
-            Configuration = config; //To use: Configuration["nameOfMySecret"]
-            _client = client;
+            //To use: Configuration["nameOfMySecret
         }
-        //public async Task<HassEntity> GetEntityStateAsync(string entityId)
-        //{
-        //    string _apiPassword = Configuration["ApiPassword"];
-        //    var url = $"http://grimsan.servebeer.com:8123/api/states/{entityId}?api_password={_apiPassword}";
 
-        //    try
-        //    {
-        //        WebRequest request = WebRequest.Create(url);
-        //        request.Credentials = CredentialCache.DefaultCredentials;
-        //        var response = await request.GetResponseAsync();
-        //        Stream dataStream = response.GetResponseStream();
-        //        StreamReader reader = new StreamReader(dataStream);
-        //        string responseFromServer = await reader.ReadToEndAsync();
-        //        var entity = JsonConvert.DeserializeObject<HassEntity>(responseFromServer);
+        private string ApiPassword => _configuration["ApiPassword"];
 
-        //        return entity;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine("Exception thrown = " + ex);
-        //        return new HassEntity{EntityId = entityId, Message = "There's been an error getting this entity"};
-        //    }
-        //}
 
         public async Task<HassEntity> GetEntityStateAsync(string entityId)
         {
-            //using (var client = new HttpClient())
-            //{
-                try
-                {
-                    var apiPassword = Configuration["ApiPassword"];
-                    _client.BaseAddress = new Uri("http://grimsan.servebeer.com:8123");
-                    var response = await _client.GetAsync($"/api/states/{entityId}?api_password={apiPassword}");
-                    response.EnsureSuccessStatusCode();
+            var response = await _client.GetAsync($"/api/states/{entityId}?api_password={ApiPassword}");
 
-                    var entity = await response.DeserializeResultAsync<HassEntity>();
-                    return entity;
-                }
-                catch (Exception exception)
-                {
-                    Console.WriteLine("Exception thrown = " + exception);
-                    return new HassEntity {EntityId = entityId, Message = "There's been an error getting this entity"};
+            // DeserializeResultAsync ensures success status code
+            var entity = await response.DeserializeResultAsync<HassEntity>();
 
-                }
-            //}
+            return entity;
         }
 
         public async Task<IEnumerable<HassEntity>> GetStatesAsync()
         {
-            string _apiPassword = Configuration["ApiPassword"];
-            var url = $"http://grimsan.servebeer.com:8123/api/states?api_password={_apiPassword}";
-
-            try
-            {
-                WebRequest request = WebRequest.Create(url);
-                request.Credentials = CredentialCache.DefaultCredentials;
-                var response = await request.GetResponseAsync();
-                Stream dataStream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(dataStream);
-                string responseFromServer = await reader.ReadToEndAsync();
-
-                var entities = JsonConvert.DeserializeObject<IEnumerable<HassEntity>>(responseFromServer).ToList();
-
-                return entities;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception thrown = " + ex);
-                return new List<HassEntity> { new HassEntity { Message = "There's been an error getting this entity list" } };
-            }
+            var response = await _client.GetAsync($"/api/states?api_password={ApiPassword}");
+            return await response.DeserializeResultAsync<IEnumerable<HassEntity>>();
         }
 
         public async Task<IEnumerable<HassEntity>> GetAllDoorEntitiesAsync()
