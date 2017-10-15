@@ -1,0 +1,45 @@
+﻿@model Security
+    
+    @if (Model.Doors.All(x => x.State.ToLower() == "closed"))
+    {
+        <div class="text-success">All doors closed</div>
+    }
+    else
+    {
+        <div>
+            @if (Model.Doors.Any(x => x.State.ToLower() == "open"))
+            {
+                <h4 class="text-danger">Open:</h4>
+                foreach (var door in Model.Doors)
+                {
+                    if (door.State.ToLower() == "Open")
+                    {
+                        <h6>@door.Attributes.FriendlyName, Last changed: @door.LastChanged</h6>
+                    }
+                }
+            }
+            @if (Model.Doors.Any(x => x.State.ToLower() == "closed"))
+            {
+                <h4>Closed:</h4>
+                foreach (var door in Model.Doors)
+                {
+                    if (door.State.ToLower() == "closed")
+                    {
+                        <h6>@door.Attributes.FriendlyName, Last changed: @door.LastChanged</h6>
+                    }
+                }
+            }
+            @if (Model.Doors.Any(x => x.State.ToLower() == "unknown"))
+            {
+                <h4 class="text-danger">Unknown:</h4>
+                foreach (var door in Model.Doors)
+                {
+                    if (door.State.ToLower() == "unknown")
+                    {
+                        <h6>@door.Attributes.FriendlyName, Last changed: @door.LastChanged</h6>
+                    }
+
+                }
+            }
+        </div>
+    }
