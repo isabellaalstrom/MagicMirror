@@ -3,31 +3,34 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using SignalR;
 
-public class Startup
+namespace SignalR
 {
-    public void ConfigureServices(
-        IServiceCollection services)
+    public class Startup
     {
-        services.AddCors(options =>
+        public void ConfigureServices(
+            IServiceCollection services)
         {
-            options.AddPolicy("fiver",
-                policy => policy.AllowAnyOrigin()
-                    .AllowAnyHeader()
-                    .AllowAnyMethod());
-        });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("fiver",
+                    policy => policy.AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+            });
 
-        services.AddSignalR(); // &lt;-- SignalR
-    }
+            services.AddSignalR(); // &lt;-- SignalR
+        }
 
-    public void Configure(
-        IApplicationBuilder app,
-        IHostingEnvironment env)
-    {
-        app.UseCors("fiver");
-
-        app.UseSignalR(routes =>  // &lt;-- SignalR
+        public void Configure(
+            IApplicationBuilder app,
+            IHostingEnvironment env)
         {
-            routes.MapHub<ReportsPublisher> ("reportsPublisher");
-        });
+            app.UseCors("fiver");
+
+            app.UseSignalR(routes => // &lt;-- SignalR
+            {
+                routes.MapHub<ReportsPublisher>("reportsPublisher");
+            });
+        }
     }
 }

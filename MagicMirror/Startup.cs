@@ -34,6 +34,7 @@ namespace MagicMirror
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.AddTransient<MqttService>();
             services.AddSingleton<IHassService, HassService>();
             services.AddSingleton<HttpClient>();
 
