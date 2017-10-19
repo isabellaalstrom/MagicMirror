@@ -6,7 +6,7 @@
     <script>
         $(function () {
 
-            let hubUrl = 'http://localhost:5000/reportsPublisher';
+            let hubUrl = 'http://localhost:65510/reportsPublisher';
             let httpConnection = new signalR.HttpConnection(hubUrl);
             let hubConnection = new signalR.HubConnection(httpConnection);
 

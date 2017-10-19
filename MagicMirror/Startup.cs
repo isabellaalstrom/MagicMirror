@@ -12,11 +12,13 @@ using Microsoft.Extensions.DependencyInjection;
 using MagicMirror.Data;
 using MagicMirror.Models;
 using MagicMirror.Services;
-
+using Microsoft.AspNet.SignalR.Infrastructure;
+using Microsoft.AspNetCore.SignalR.Infrastructure;
 namespace MagicMirror
 {
     public class Startup
     {
+        public static IConnectionManager ConnectionManager;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -33,7 +35,7 @@ namespace MagicMirror
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
+            services.AddSignalR();
             services.AddTransient<MqttService>();
             services.AddSingleton<IHassService, HassService>();
             services.AddSingleton<HttpClient>();
@@ -45,8 +47,10 @@ namespace MagicMirror
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
+            ConnectionManager = serviceProvider.GetService<IConnectionManager>();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -61,7 +65,10 @@ namespace MagicMirror
             app.UseStaticFiles();
 
             app.UseAuthentication();
-
+            app.UseSignalR(routes => // &lt;-- SignalR
+            {
+                routes.MapHub<ReportsPublisher>("reportsPublisher");
+            });
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

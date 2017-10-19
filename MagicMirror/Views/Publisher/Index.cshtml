@@ -7,12 +7,12 @@
     <script>
     $(function () {
 
-    let hubUrl = 'http://localhost:5000/reportsPublisher';
+    let hubUrl = 'http://localhost:65510/reportsPublisher';
     let httpConnection = new signalR.HttpConnection(hubUrl);
     let hubConnection = new signalR.HubConnection(httpConnection);
 
-    $("#publishReport").click(function () {
-    hubConnection.invoke('PublishReport', $('#reportName').val());
+        $("#publishReport").click(function () { //todo I want a new mqtt message to invoke this instead
+    hubConnection.invoke('PublishReport', $('#reportName').val()); 
     });
 
     hubConnection.start();
