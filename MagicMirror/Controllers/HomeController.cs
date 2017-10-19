@@ -26,9 +26,10 @@ namespace MagicMirror.Controllers
 
         public IActionResult Index()
         {
-            //_mqttService.Subscribe();
+            _mqttService.Subscribe();
             //GetEntityState("sensor.downstairs_litter_box_visits");
-            return View();
+            var model = _mqttService.Entities;
+            return View(model);
         }
 
         public IActionResult Error()
