@@ -28,8 +28,8 @@ namespace MagicMirror.Controllers
         {
             _mqttService.Subscribe();
             //GetEntityState("sensor.downstairs_litter_box_visits");
-            var model = _mqttService.Entities;
-            return View(model);
+            //var model = _mqttService.Entities;
+            return View();
         }
 
         public IActionResult Error()

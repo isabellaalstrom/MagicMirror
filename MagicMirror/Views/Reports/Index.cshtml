@@ -1,6 +1,6 @@
-﻿<h2>Reports</h2>
+﻿@*<h2>Reports</h2>
 
-<ul id="reports"></ul>
+<ul id="doors"></ul>
 
 @section Scripts {
     <script>
@@ -11,11 +11,11 @@
             let hubConnection = new signalR.HubConnection(httpConnection);
 
             hubConnection.on('OnReportPublished', data => {
-                $('#reports').append($('<li>').text(data));
+                $('#doors').append($('<p>').text(data));
             });
 
             hubConnection.start();
 
         });
     </script>
-}
+}*@

@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RuntimeFrameworkVersion>2.0.0</RuntimeFrameworkVersion>
+    <RuntimeIdentifiers>ubuntu.16.04-arm</RuntimeIdentifiers>
     <UserSecretsId>aspnet-MagicMirror-C3E76BC1-C2DA-4800-9A6A-84F5173AE095</UserSecretsId>
   </PropertyGroup>
 

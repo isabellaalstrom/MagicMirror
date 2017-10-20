@@ -43,7 +43,9 @@ namespace MagicMirror.Services
             myClient.Connect(clientId, Username, Password);
 
             // Subscribe to topic
-            myClient.Subscribe(new String[] { "/homeassistant/#" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            string[] topics = {"/homeassistant/light/#", "/homeassistant/sensor/#"};
+            byte[] qosLevels = {MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE };
+            myClient.Subscribe(topics, qosLevels);
             //Console.ReadLine();
         }
 
@@ -64,18 +66,16 @@ namespace MagicMirror.Services
             var topicSplit = topic.Split("/");
             var entity = new HassEntity
             {
-                EntityId = $"{topicSplit[2]}.{topicSplit[3]}",
+                EntityId = $"{topicSplit[2]}_{topicSplit[3]}",
                 State = message
             };
-            Entities.Add(entity);
-            var hub = _hubContext.Clients.All.InvokeAsync("OnReportPublished", $"{topicSplit[2]}.{topicSplit[3]}: {message}");
-            //var test = _hubContext.PublishReport("Hej");
+            //Entities.Add(entity);
+            if (entity.EntityId.StartsWith("sensor") && entity.EntityId.EndsWith("door"))
+            {
+                var hub = _hubContext.Clients.All
+                    .InvokeAsync("OnDoorUpdate", entity);
+            }
 
         }
-
-        //public List<HassEntity> GetAllEntities()
-        //{
-            
-        //}
     }
 }

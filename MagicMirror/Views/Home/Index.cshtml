@@ -6,8 +6,8 @@
         <div id="dateTimeModule">
             <span id="date"></span>
             <span id="time"></span>
-        </div> 
-        <div id="calendarModule" class=""><h2>Calendar Module</h2></div> 
+        </div>
+        <div id="calendarModule" class=""><h2>Calendar Module</h2></div>
         <div id="todoListModule" class=""><h2>TODO-List Module</h2></div>
     </div>
 
@@ -20,11 +20,35 @@
     <div id="bottomSection" class="navbar-fixed-bottom">
         <div id="hassModule" class="col-md-12">
             <div class="col-md-3">@await Component.InvokeAsync("HassDoors")</div>
-            <div class="col-md-3">@await Component.InvokeAsync("HassLights")</div>
-            <div>
-                @foreach(var entity in Model)
-                { <p>@entity.EntityId: @entity.State</p>}
-            </div>
+            @*<div class="col-md-3">@await Component.InvokeAsync("HassLights")</div>*@
+            @*<div>
+                    @foreach(var entity in Model)
+                    { <p>@entity.EntityId: @entity.State</p>}
+                </div>*@
         </div>
     </div>
 </section>
+    @section Scripts {
+        <script>
+            $(function() {
+
+                let hubUrl = 'http://localhost:65510/reportsPublisher';
+                let httpConnection = new signalR.HttpConnection(hubUrl);
+                let hubConnection = new signalR.HubConnection(httpConnection);
+
+                let doorsDiv = $('#doors');
+                hubConnection.on('OnDoorUpdate', data =>
+                {
+                    if ($('#doors>p.' + data.entity_id).length !== 0) {
+                        $("." + data.entity_id).text(data.entity_id + ": " + data.state);
+                        console.log("if-state");
+                    } else {
+                        doorsDiv.prepend($('<p>').addClass(data.entity_id).text(data.entity_id + ": " + data.state));
+                        console.log("else-state");
+                    }
+                });
+                hubConnection.start();
+
+            });
+        </script>
+    }

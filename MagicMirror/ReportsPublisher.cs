@@ -5,9 +5,9 @@ namespace MagicMirror
 {
     public class ReportsPublisher : Hub
     {
-        public Task PublishReport(string reportName)
-        {
-            return Clients.All.InvokeAsync("OnReportPublished", reportName);
-        }
+        //public Task PublishReport(string reportName)
+        //{
+        //    return Clients.All.InvokeAsync("OnReportPublished", reportName);
+        //}
     }
 }
