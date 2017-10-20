@@ -14,6 +14,26 @@ body {
     font-weight: normal;
     }
 */
+#weather #current-temperature {
+  font-size: 60px; }
+  #weather #current-temperature #today-min-max {
+    font-size: 20px;
+    /*padding-top:15px;*/ }
+
+#weather #hourly-summary {
+  font-size: 25px;
+  margin-bottom: 20px;
+  margin-top: 10px; }
+
+#weather #forecast {
+  font-size: 25px; }
+  #weather #forecast #city-forecast {
+    border-bottom: 1px solid grey;
+    font-size: 20px; }
+
+#weather #weather-week {
+  padding-top: 30px; }
+
 body {
   /*width: 1080px;
     height: 1920px;*/
@@ -29,7 +49,8 @@ body {
   height: 300px; }
 
 #mirrorSection #currentWeatherModule {
-  height: 200px; }
+  /*height: 200px;*/
+  padding-bottom: 150px; }
 
 #mirrorSection #calendarModule {
   height: 200px; }
@@ -38,8 +59,11 @@ body {
   height: 200px; }
 
 #mirrorSection #trafficModule {
-  height: 200px; }
+  /*height: 200px;*/ }
 
 #mirrorSection #hassModule {
   /*height: 200px;*/ }
+
+#mirrorSection .no-gutters {
+  padding: 0; }
 

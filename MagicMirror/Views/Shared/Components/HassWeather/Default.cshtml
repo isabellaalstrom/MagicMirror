@@ -1,9 +1,22 @@
-﻿<div class="test-weather">
-    <span class="fa fa-">
-    </span><div id="current-temperature">4,8 &deg;</div>
-</div>
-<div id="weather">
-    
-    
-
+﻿<div id="weather">
+    <div id="current-temperature" class="text-right">
+        <div class="col-md-9 no-gutters"><span class="glyphicon-cloud"> </span><span id="dark_sky_temperature">00.0</span><span>&deg;</span></div>
+        <div id="today-min-max" class="col-md-3 no-gutters">
+            <div><span class="text-muted">max </span><span id="dark_sky_daily_high_temperature">00.0</span></div>
+            <div><span class="text-muted">min </span><span id="dark_sky_daily_low_temperature">00.0</span></div>
+        </div>   
+    </div>
+    <div id="hourly-summary">
+        <span id="dark_sky_hourly_summary">Placeholder for day summary</span>
+    </div>
+    <div id="forecast" class="text-right">
+        <div id="city-forecast">Nacka, Stockholm</div>
+            <span id="day1" class="col-md-3">Sat </span>
+            <span id="dark_sky_precip" class="col-md-3"></span>
+            <span id="dark_sky_daily_low_temperature_1" class="col-md-3">00.0</span>
+            <span id="dark_sky_daily_high_temperature_1" class="col-md-3">00.0</span>
+    </div>
+    <div id="weather-week">
+        <span id="dark_sky_daily_summary">Placeholder for weekly summary</span>
+    </div>
 </div>

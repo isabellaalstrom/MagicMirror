@@ -80,10 +80,10 @@ namespace MagicMirror.Services
             {
                 hub.InvokeAsync("OnWeatherUpdate", entity);
 
-                if (entity.EntityId.EndsWith("_1"))
-                {
-                    hub.InvokeAsync("OnForcastUpdate", entity);
-                }
+                //if (entity.EntityId.EndsWith("_1"))
+                //{
+                //    hub.InvokeAsync("OnForcastUpdate", entity);
+                //}
             }
 
         }

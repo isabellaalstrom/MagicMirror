@@ -79,18 +79,14 @@ $(function () {
         //if (data.entity_id === "") {
             
         //}
-        weatherDiv.prepend($('<p>').addClass(data.entity_id).text(data.entity_id + ": " + data.state));
-        //if ($('#doors>p.' + data.entity_id).length !== 0) {
+        weatherDiv.find("#" + data.entity_id).text(data.state);
+        console.log(data.entity_id);
+        //if ($('#weather>p.' + data.entity_id).length !== 0) {
         //    $("." + data.entity_id).text(data.entity_id + ": " + data.state);
         //    console.log("if-state");
         //} else {
         //    doorsDiv.prepend($('<p>').addClass(data.entity_id).text(data.entity_id + ": " + data.state));
         //    console.log("else-state");
-        //}
-        //if (data.state === "Open") {
-        //    $('#doors>p.' + data.entity_id).addClass("text-danger").removeClass("text-success");
-        //} else {
-        //    $('#doors>p.' + data.entity_id).addClass("text-success").removeClass("text-danger");
         //}
     });
     hubConnection.start();

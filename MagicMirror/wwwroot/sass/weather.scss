@@ -1,3 +1,28 @@
-﻿.test-weather{
+﻿#weather {
+    #current-temperature {
+        font-size: 60px;
+        #today-min-max{
+            font-size: 20px;
+            /*padding-top:15px;*/
+        }
+    }
 
+    #hourly-summary {
+        font-size: 25px;
+        margin-bottom: 20px;
+        margin-top:10px;
+    }
+
+    #forecast {
+        font-size: 25px;
+
+        #city-forecast {
+            border-bottom: 1px solid grey;
+            font-size: 20px;
+        }
+    }
+
+    #weather-week {
+        padding-top: 30px;
+    }
 }
