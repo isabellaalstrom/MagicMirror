@@ -42,6 +42,83 @@ $(document).ready(function () {
 );
 
 
+// DOORS FROM MQTT HUB
+$(function () {
+
+    let hubUrl = 'http://localhost:65510/reportsPublisher';
+    let httpConnection = new signalR.HttpConnection(hubUrl);
+    let hubConnection = new signalR.HubConnection(httpConnection);
+
+    let doorsDiv = $('#doors');
+    hubConnection.on('OnDoorUpdate', data => {
+        if ($('#doors>p.' + data.entity_id).length !== 0) {
+            $("." + data.entity_id).text(data.entity_id + ": " + data.state);
+            console.log("if-state");
+        } else {
+            doorsDiv.prepend($('<p>').addClass(data.entity_id).text(data.entity_id + ": " + data.state));
+            console.log("else-state");
+        }
+        if (data.state === "Open") {
+            $('#doors>p.' + data.entity_id).addClass("text-danger").removeClass("text-success");
+        } else {
+            $('#doors>p.' + data.entity_id).addClass("text-success").removeClass("text-danger");
+        }
+    });
+    hubConnection.start();
+});
+
+// WEATHER FROM MQTT HUB
+$(function () {
+
+    let hubUrl = 'http://localhost:65510/reportsPublisher';
+    let httpConnection = new signalR.HttpConnection(hubUrl);
+    let hubConnection = new signalR.HubConnection(httpConnection);
+
+    let weatherDiv = $('#weather');
+    hubConnection.on('OnWeatherUpdate', data => {
+        //if (data.entity_id === "") {
+            
+        //}
+        weatherDiv.prepend($('<p>').addClass(data.entity_id).text(data.entity_id + ": " + data.state));
+        //if ($('#doors>p.' + data.entity_id).length !== 0) {
+        //    $("." + data.entity_id).text(data.entity_id + ": " + data.state);
+        //    console.log("if-state");
+        //} else {
+        //    doorsDiv.prepend($('<p>').addClass(data.entity_id).text(data.entity_id + ": " + data.state));
+        //    console.log("else-state");
+        //}
+        //if (data.state === "Open") {
+        //    $('#doors>p.' + data.entity_id).addClass("text-danger").removeClass("text-success");
+        //} else {
+        //    $('#doors>p.' + data.entity_id).addClass("text-success").removeClass("text-danger");
+        //}
+    });
+    hubConnection.start();
+});
+// FORCAST FROM MQTT HUB
+//$(function () {
+
+//    let hubUrl = 'http://localhost:65510/reportsPublisher';
+//    let httpConnection = new signalR.HttpConnection(hubUrl);
+//    let hubConnection = new signalR.HubConnection(httpConnection);
+
+//    let doorsDiv = $('#doors');
+//    hubConnection.on('OnForcastUpdate', data => {
+//        if ($('#doors>p.' + data.entity_id).length !== 0) {
+//            $("." + data.entity_id).text(data.entity_id + ": " + data.state);
+//            console.log("if-state");
+//        } else {
+//            doorsDiv.prepend($('<p>').addClass(data.entity_id).text(data.entity_id + ": " + data.state));
+//            console.log("else-state");
+//        }
+//        if (data.state === "Open") {
+//            $('#doors>p.' + data.entity_id).addClass("text-danger").removeClass("text-success");
+//        } else {
+//            $('#doors>p.' + data.entity_id).addClass("text-success").removeClass("text-danger");
+//        }
+//    });
+//    hubConnection.start();
+//});
 
 
 ////API TEST

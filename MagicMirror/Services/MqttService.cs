@@ -63,17 +63,27 @@ namespace MagicMirror.Services
 
         private void SaveEntityState(string topic, string message)
         {
+            var hub = _hubContext.Clients.All;
+
             var topicSplit = topic.Split("/");
             var entity = new HassEntity
             {
-                EntityId = $"{topicSplit[2]}_{topicSplit[3]}",
+                EntityId = topicSplit[3],
                 State = message
             };
             //Entities.Add(entity);
-            if (entity.EntityId.StartsWith("sensor") && entity.EntityId.EndsWith("door"))
+            if (entity.EntityId.EndsWith("door"))
             {
-                var hub = _hubContext.Clients.All
-                    .InvokeAsync("OnDoorUpdate", entity);
+                hub.InvokeAsync("OnDoorUpdate", entity);
+            }
+            if (entity.EntityId.StartsWith("dark_sky"))
+            {
+                hub.InvokeAsync("OnWeatherUpdate", entity);
+
+                if (entity.EntityId.EndsWith("_1"))
+                {
+                    hub.InvokeAsync("OnForcastUpdate", entity);
+                }
             }
 
         }

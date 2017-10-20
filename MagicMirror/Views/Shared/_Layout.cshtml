@@ -8,12 +8,14 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/main.css" />
+        <script src="https://use.fontawesome.com/7ad4210f10.js"></script>
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/main.css" asp-append-version="true" />
+        <script src="https://use.fontawesome.com/7ad4210f10.js"></script>
     </environment>
 </head>
 <body>
@@ -42,7 +44,7 @@
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
         <script src="~/js/clock.js" asp-append-version="true"></script>
         <script src="js/signalr-client.min.js"></script>
     </environment>
@@ -50,20 +52,3 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
-@*<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ASP.NET Core SignalR</title>
-
-    <script src="~/js/signalr-client.min.js"></script>
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-</head>
-<body>
-<div>
-    @RenderBody()
-    @RenderSection("scripts", required: false)
-</div>
-</body>
-</html>*@

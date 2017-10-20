@@ -1,6 +1,6 @@
 ﻿@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
 #dateTimeModule #time {
-  font-size: 130px; }
+  font-size: 120px; }
 
 #dateTimeModule #date {
   font-size: 40px; }
@@ -29,7 +29,7 @@ body {
   height: 300px; }
 
 #mirrorSection #currentWeatherModule {
-  height: 300px; }
+  height: 200px; }
 
 #mirrorSection #calendarModule {
   height: 200px; }

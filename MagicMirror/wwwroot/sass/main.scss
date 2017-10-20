@@ -1,5 +1,6 @@
 ﻿@import "clock";
 @import "fonts";
+@import "weather";
 body {
     /*width: 1080px;
     height: 1920px;*/
@@ -19,7 +20,7 @@ body {
     }
 
     #currentWeatherModule {
-        height: 300px;
+        height: 200px;
     }
 
     #calendarModule {

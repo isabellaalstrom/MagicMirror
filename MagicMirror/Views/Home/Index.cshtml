@@ -12,7 +12,7 @@
     </div>
 
     <div id="rightSection" class="col-md-offset-4 col-md-3">
-        <div id="currentWeatherModule" class=""><h2>Current Weather Module</h2></div>
+        <div id="currentWeatherModule" class="">@await Component.InvokeAsync("HassWeather")</div>
         <div id="forecastModule" class=""><h2>Forecast Module</h2></div>
         <div id="trafficModule" class=""><h2>Traffic Module</h2></div>
     </div>
@@ -28,27 +28,3 @@
         </div>
     </div>
 </section>
-    @section Scripts {
-        <script>
-            $(function() {
-
-                let hubUrl = 'http://localhost:65510/reportsPublisher';
-                let httpConnection = new signalR.HttpConnection(hubUrl);
-                let hubConnection = new signalR.HubConnection(httpConnection);
-
-                let doorsDiv = $('#doors');
-                hubConnection.on('OnDoorUpdate', data =>
-                {
-                    if ($('#doors>p.' + data.entity_id).length !== 0) {
-                        $("." + data.entity_id).text(data.entity_id + ": " + data.state);
-                        console.log("if-state");
-                    } else {
-                        doorsDiv.prepend($('<p>').addClass(data.entity_id).text(data.entity_id + ": " + data.state));
-                        console.log("else-state");
-                    }
-                });
-                hubConnection.start();
-
-            });
-        </script>
-    }

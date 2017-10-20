@@ -12,13 +12,14 @@ using Microsoft.Extensions.DependencyInjection;
 using MagicMirror.Data;
 using MagicMirror.Models;
 using MagicMirror.Services;
-using Microsoft.AspNet.SignalR.Infrastructure;
 using Microsoft.AspNetCore.SignalR.Infrastructure;
+using Microsoft.AspNetCore.Sockets;
+
 namespace MagicMirror
 {
     public class Startup
     {
-        public static IConnectionManager ConnectionManager;
+        public static ConnectionManager ConnectionManager;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -49,18 +50,18 @@ namespace MagicMirror
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider serviceProvider)
         {
-            ConnectionManager = serviceProvider.GetService<IConnectionManager>();
+            ConnectionManager = serviceProvider.GetService<ConnectionManager>();
 
-            if (env.IsDevelopment())
-            {
+            //if (env.IsDevelopment())
+            //{
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
                 app.UseDatabaseErrorPage();
-            }
-            else
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
+            //}
+            //else
+            //{
+            //    app.UseExceptionHandler("/Home/Error");
+            //}
 
             app.UseStaticFiles();
 

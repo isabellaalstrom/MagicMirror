@@ -11,7 +11,6 @@
   <ItemGroup>
     <PackageReference Include="Gray.Microsoft.AspNetCore.SignalR.Messaging" Version="0.2.0" />
     <PackageReference Include="M2MqttDotnetCore" Version="1.0.7" />
-    <PackageReference Include="Microsoft.AspNet.SignalR.Core" Version="2.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.0.0-alpha2-final" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" PrivateAssets="All" />
@@ -31,11 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\SignalR\SignalR.csproj" />
+    <Folder Include="Pages\Components\" />
   </ItemGroup>
 
 </Project>
