@@ -1,4 +1,4 @@
-﻿@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+﻿@import url(https://fonts.googleapis.com/css?family=Roboto:300,400);
 #dateTimeModule #time {
   font-size: 120px; }
 
@@ -16,7 +16,9 @@ body {
 */
 #weather #current-temperature {
   font-size: 60px; }
-  #weather #current-temperature #today-min-max {
+  #weather #current-temperature #current-top {
+    font-size: 20px; }
+  #weather #current-temperature #current-right {
     font-size: 20px;
     /*padding-top:15px;*/ }
 
@@ -33,6 +35,9 @@ body {
 
 #weather #weather-week {
   padding-top: 30px; }
+
+#weather .precip-probability {
+  font-size: 20px; }
 
 body {
   /*width: 1080px;

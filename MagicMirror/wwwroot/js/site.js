@@ -91,6 +91,26 @@ $(function () {
     });
     hubConnection.start();
 });
+
+// Upcoming week days for weather forecast
+$(function() {
+    var date = new Date(),
+        locale = "en-us";
+    var currentDay = date.getDay();
+
+    var weekday = new Array(7);
+    weekday[1] = "Mon";
+    weekday[2] = "Tue";
+    weekday[3] = "Wed";
+    weekday[4] = "Thu";
+    weekday[5] = "Fri";
+    weekday[6] = "Sat";
+    weekday[7] = "Sun";
+
+    for (var i = 1; i <= 7; i++) {
+        $("#day_"+i).text(weekday[currentDay + i]);
+    }
+});
 // FORCAST FROM MQTT HUB
 //$(function () {
 
