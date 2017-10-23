@@ -1,4 +1,4 @@
-﻿#weather {
+﻿#weather-section {
     #current-temperature {
         font-size: 60px;
 
@@ -28,7 +28,8 @@
     }
 
     #weather-week {
-        padding-top: 30px;
+        /*margin-top: 30px;*/
+        line-height: 40px;
     }
 
     .precip-probability {

@@ -1,8 +1,9 @@
-﻿<div id="weather">
+﻿<div id="weather-section">
     <div id="current-temperature" class="">
         <div class="col-md-offset-2 col-md-8 no-gutters">
             <div id="current-top" class="text-left">
-                <span id="dark_sky_precip"></span><span id="dark_sky_precip_probability">00</span><span>%</span>
+                <span id="dark_sky_precip"></span><span id="dark_sky_precip_probability">00</span><span>%   </span>
+                <span>Feels like </span><span id="dark_sky_apparent_temperature">00.0</span><span>&deg;</span>
             </div>
             <div id="current-bottom">
                 <span class="glyphicon-cloud"> </span> @*summary icon*@
@@ -23,17 +24,22 @@
     </div>
     <div id="forecast" class="text-right">
         <div id="city-forecast">Nacka, Stockholm</div>
+
         @for (int i = 1; i <= 7; i++)
-        {
-            //var precipIcon =
-            //var imgSrc = $"http://grimsan.servebeer.com:8123/static/images/darksky/{precipIcon}svg";
-            <span id="day_@i" class="col-md-3">Day</span>
-            <span class="col-md-3 precip-probability">
-                <span id="dark_sky_precip_@i">@*<img src="@imgSrc">*@</span>
-                <span id="dark_sky_precip_probability_@i">00</span><span>%</span>
-            </span>
-            <span id="dark_sky_daily_low_temperature_@i" class="col-md-3">00.0</span>
-            <span id="dark_sky_daily_high_temperature_@i" class="col-md-3">00.0</span>
+            {
+
+            <div>
+                @*//var precipIcon =*@
+                @*//var imgSrc = $"http://grimsan.servebeer.com:8123/static/images/darksky/{precipIcon}svg";*@
+                <span id="day_@i" class="col-md-3">Day</span>
+                <span class="col-md-3 precip-probability">
+                    <span id="dark_sky_precip_@i">@*<img src="@imgSrc">*@</span>
+                    <span id="dark_sky_precip_probability_@i">00</span><span>%</span>
+                </span>
+                <span id="dark_sky_daily_low_temperature_@i" class="col-md-3">00.0</span>
+                <span id="dark_sky_daily_high_temperature_@i" class="col-md-3">00.0</span>
+            </div>
+
         }
     </div>
     <div id="weather-week">

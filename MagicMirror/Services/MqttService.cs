@@ -43,8 +43,8 @@ namespace MagicMirror.Services
             myClient.Connect(clientId, Username, Password);
 
             // Subscribe to topic
-            string[] topics = {"/homeassistant/light/#", "/homeassistant/sensor/#"};
-            byte[] qosLevels = {MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE };
+            string[] topics = { "/homeassistant/sensor/#" };
+            byte[] qosLevels = { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE };
             myClient.Subscribe(topics, qosLevels);
             //Console.ReadLine();
         }
@@ -64,28 +64,32 @@ namespace MagicMirror.Services
         private void SaveEntityState(string topic, string message)
         {
             var hub = _hubContext.Clients.All;
-
             var topicSplit = topic.Split("/");
-            var entity = new HassEntity
-            {
-                EntityId = topicSplit[3],
-                State = message
-            };
-            //Entities.Add(entity);
-            if (entity.EntityId.EndsWith("door"))
-            {
-                hub.InvokeAsync("OnDoorUpdate", entity);
-            }
-            if (entity.EntityId.StartsWith("dark_sky"))
-            {
-                hub.InvokeAsync("OnWeatherUpdate", entity);
+            var entity = new HassEntity();
 
-                //if (entity.EntityId.EndsWith("_1"))
-                //{
-                //    hub.InvokeAsync("OnForcastUpdate", entity);
-                //}
+            if (topicSplit[4] == "state")
+            {
+                entity.EntityId = topicSplit[3];
+                entity.State = message;
+                if (entity.EntityId.StartsWith("dark_sky"))
+                {
+                    hub.InvokeAsync("OnWeatherUpdate", entity);
+                }
+                else if (entity.EntityId.EndsWith("door"))
+                {
+                    hub.InvokeAsync("OnDoorUpdate", entity);
+                }
             }
-
+            else if (topicSplit[4] == "friendly_name")
+            {
+                entity.EntityId = topicSplit[3];
+                entity.Attributes.FriendlyName = message;
+            }
+            else if (topicSplit[4] == "entity_picture")
+            {
+                entity.EntityId = topicSplit[3];
+                entity.Attributes.EntityPicture = message;
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@import url(https://fonts.googleapis.com/css?family=Roboto:300,400);
+﻿@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400);
 #dateTimeModule #time {
   font-size: 120px; }
 
@@ -7,37 +7,42 @@
 
 body {
   font-family: "Roboto Condensed", serif;
-  font-weight: normal; }
+  font-weight: 300; }
 
 /*h1, h2, h3, h4, h5, h6 {
     font-family: $roboto-condensed;
     font-weight: normal;
     }
 */
-#weather #current-temperature {
+#weather-section #current-temperature {
   font-size: 60px; }
-  #weather #current-temperature #current-top {
+  #weather-section #current-temperature #current-top {
     font-size: 20px; }
-  #weather #current-temperature #current-right {
+  #weather-section #current-temperature #current-right {
     font-size: 20px;
     /*padding-top:15px;*/ }
 
-#weather #hourly-summary {
+#weather-section #hourly-summary {
   font-size: 25px;
   margin-bottom: 20px;
   margin-top: 10px; }
 
-#weather #forecast {
+#weather-section #forecast {
   font-size: 25px; }
-  #weather #forecast #city-forecast {
+  #weather-section #forecast #city-forecast {
     border-bottom: 1px solid grey;
     font-size: 20px; }
 
-#weather #weather-week {
-  padding-top: 30px; }
+#weather-section #weather-week {
+  /*margin-top: 30px;*/
+  line-height: 40px; }
 
-#weather .precip-probability {
+#weather-section .precip-probability {
   font-size: 20px; }
+
+#calendar-section pre {
+  background-color: black;
+  color: white; }
 
 body {
   /*width: 1080px;
@@ -45,23 +50,22 @@ body {
   background-color: black;
   color: white;
   padding-top: 30px; }
+  body .container-fluid {
+    padding: 0; }
 
 #mirrorSection div {
   /*height: 300px;*/
   /*font-size: x-large;*/ }
 
 #mirrorSection #dateTimemodule {
-  height: 300px; }
+  /*height: 300px;*/ }
 
 #mirrorSection #currentWeatherModule {
   /*height: 200px;*/
   padding-bottom: 150px; }
 
 #mirrorSection #calendarModule {
-  height: 200px; }
-
-#mirrorSection #forecastModule {
-  height: 200px; }
+  /*height: 200px;*/ }
 
 #mirrorSection #trafficModule {
   /*height: 200px;*/ }

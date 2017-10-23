@@ -7,7 +7,7 @@ function updateClock() {
     var currentSeconds = date.getSeconds();
     var currentDay = date.getDay();
     var currentDate = date.getDate();
-    var currentMonth = date.toLocaleString(locale, { month: "long" });
+    var currentMonth = date.toLocaleString(locale, { month: "short" });
     var currentYear = date.getFullYear();
 
     // Pad the minutes and seconds with leading zeros, if required
@@ -42,13 +42,43 @@ $(document).ready(function () {
 );
 
 
-// DOORS FROM MQTT HUB
+//// DOORS FROM MQTT HUB
+//$(function () {
+
+//    let hubUrl = 'http://localhost:65510/reportsPublisher';
+//    let httpConnection = new signalR.HttpConnection(hubUrl);
+//    let hubConnection = new signalR.HubConnection(httpConnection);
+
+//    let doorsDiv = $('#doors');
+//    hubConnection.on('OnDoorUpdate', data => {
+//        if ($('#doors>p.' + data.entity_id).length !== 0) {
+//            $("." + data.entity_id).text(data.entity_id + ": " + data.state);
+//            console.log("if-state");
+//        } else {
+//            doorsDiv.prepend($('<p>').addClass(data.entity_id).text(data.entity_id + ": " + data.state));
+//            console.log("else-state");
+//        }
+//        if (data.state === "Open") {
+//            $('#doors>p.' + data.entity_id).addClass("text-danger").removeClass("text-success");
+//        } else {
+//            $('#doors>p.' + data.entity_id).addClass("text-success").removeClass("text-danger");
+//        }
+//    });
+//    hubConnection.start();
+//});
+
+// WEATHER FROM MQTT HUB
 $(function () {
 
     let hubUrl = 'http://localhost:65510/reportsPublisher';
     let httpConnection = new signalR.HttpConnection(hubUrl);
     let hubConnection = new signalR.HubConnection(httpConnection);
 
+    let weatherDiv = $('#weather-section');
+    hubConnection.on('OnWeatherUpdate', data => {
+        weatherDiv.find("#" + data.entity_id).text(data.state);
+        console.log(data.entity_id);
+    });
     let doorsDiv = $('#doors');
     hubConnection.on('OnDoorUpdate', data => {
         if ($('#doors>p.' + data.entity_id).length !== 0) {
@@ -58,36 +88,11 @@ $(function () {
             doorsDiv.prepend($('<p>').addClass(data.entity_id).text(data.entity_id + ": " + data.state));
             console.log("else-state");
         }
-        if (data.state === "Open") {
+        if (data.state === "Open" || data.state === "Unknown" ) {
             $('#doors>p.' + data.entity_id).addClass("text-danger").removeClass("text-success");
         } else {
             $('#doors>p.' + data.entity_id).addClass("text-success").removeClass("text-danger");
         }
-    });
-    hubConnection.start();
-});
-
-// WEATHER FROM MQTT HUB
-$(function () {
-
-    let hubUrl = 'http://localhost:65510/reportsPublisher';
-    let httpConnection = new signalR.HttpConnection(hubUrl);
-    let hubConnection = new signalR.HubConnection(httpConnection);
-
-    let weatherDiv = $('#weather');
-    hubConnection.on('OnWeatherUpdate', data => {
-        //if (data.entity_id === "") {
-            
-        //}
-        weatherDiv.find("#" + data.entity_id).text(data.state);
-        console.log(data.entity_id);
-        //if ($('#weather>p.' + data.entity_id).length !== 0) {
-        //    $("." + data.entity_id).text(data.entity_id + ": " + data.state);
-        //    console.log("if-state");
-        //} else {
-        //    doorsDiv.prepend($('<p>').addClass(data.entity_id).text(data.entity_id + ": " + data.state));
-        //    console.log("else-state");
-        //}
     });
     hubConnection.start();
 });

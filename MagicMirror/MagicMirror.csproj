@@ -29,8 +29,4 @@
     <None Include="Views\Shared\Components\HassSecurity\Default.cshtml" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Components\" />
-  </ItemGroup>
-
 </Project>
