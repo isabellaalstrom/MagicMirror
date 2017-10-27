@@ -1,48 +1,47 @@
 ﻿<div id="weather-section">
-    <div id="current-temperature" class="">
-        <div class="col-md-offset-2 col-md-8 no-gutters">
-            <div id="current-top" class="text-left">
-                <span id="dark_sky_precip"></span><span id="dark_sky_precip_probability">00</span><span>%   </span>
-                <span>Feels like </span><span id="dark_sky_apparent_temperature">00.0</span><span>&deg;</span>
-            </div>
-            <div id="current-bottom">
-                <span class="glyphicon-cloud"> </span> @*summary icon*@
-                <span id="dark_sky_temperature">00.0</span><span>&deg;</span>
-            </div>
+    @*<div id="current-temperature" class="">*@
+    
+    <div id="current-left" class="col-md-4">
+        <canvas id="dark_sky_summary_icon" height="100" width="80"> </canvas>
+    </div>
+    <div class="col-md-6 no-gutters">
+        <div id="current-top" class="text-left">
+            <span id="dark_sky_precip"></span><span id="dark_sky_precip_probability">000</span><span>% </span>
+            <span>Feels like </span><span id="dark_sky_apparent_temperature">00.0</span><span>&deg;</span>
         </div>
-        <div id="current-right" class="col-md-2 no-gutters text-right">
-            <div>
-                <span class="text-muted">max </span><span id="dark_sky_daily_high_temperature">00.0</span>
-            </div>
-            <div>
-                <span class="text-muted">min </span><span id="dark_sky_daily_low_temperature">00.0</span>
-            </div>
+        <div id="current-bottom">
+            
+            <span id="dark_sky_temperature">00.0</span><span>&deg;</span>
         </div>
     </div>
-    <div id="hourly-summary">
-        <span id="dark_sky_hourly_summary">Placeholder for day summary</span>
+    <div id="current-right" class="col-md-2 no-gutters text-right">
+        <span class="text-muted">max </span><span id="dark_sky_daily_high_temperature">00.0</span><span>&deg;</span>
+        <span class="text-muted">min </span><span id="dark_sky_daily_low_temperature">00.0</span><span>&deg;</span>
     </div>
-    <div id="forecast" class="text-right">
+    @*</div>*@
+    <div id="hourly-summary" class="col-md-12 no-gutters">
+        <div id="dark_sky_hourly_summary">:Light rain tomorrow morning.</div>
+    </div>
+    <div id="forecast" class="text-right col-md-offset-2 col-md-10 no-gutters">
         <div id="city-forecast">Nacka, Stockholm</div>
 
         @for (int i = 1; i <= 7; i++)
-            {
+        {
+            var precidId = "dark_sky_precip_" + @i + "_icon";
 
-            <div>
-                @*//var precipIcon =*@
-                @*//var imgSrc = $"http://grimsan.servebeer.com:8123/static/images/darksky/{precipIcon}svg";*@
-                <span id="day_@i" class="col-md-3">Day</span>
-                <span class="col-md-3 precip-probability">
-                    <span id="dark_sky_precip_@i">@*<img src="@imgSrc">*@</span>
-                    <span id="dark_sky_precip_probability_@i">00</span><span>%</span>
-                </span>
-                <span id="dark_sky_daily_low_temperature_@i" class="col-md-3">00.0</span>
-                <span id="dark_sky_daily_high_temperature_@i" class="col-md-3">00.0</span>
-            </div>
-
+            <span id="day_@i" class="col-md-2 text-left no-gutters">Day</span>
+            <span class="col-md-4 precip-probability">
+                <canvas id="@precidId" class="col-md-4 no-gutters" height="128" width="128"></canvas>
+                <span id="dark_sky_precip_probability_@i" class="">000</span><span>%</span>
+            </span>
+            <span id="dark_sky_daily_low_temperature_@i" class="col-md-3">00.0</span>
+            <span id="dark_sky_daily_high_temperature_@i" class="col-md-3">00.0</span>
         }
     </div>
-    <div id="weather-week">
-        <span id="dark_sky_daily_summary">Placeholder for weekly summary</span>
+    <div id="weather-week" class="col-md-12 no-gutters">
+        <span id="dark_sky_daily_summary">:Mixed precipitation tomorrow through Thursday, with temperatures bottoming out at 2°C on Monday.</span>
+        @*<span id="dark_sky_daily_summary_icon"> </span><span id="dark_sky_hourly_summary_icon"> </span>*@
     </div>
+
 </div>
+

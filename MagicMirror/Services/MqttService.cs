@@ -71,7 +71,12 @@ namespace MagicMirror.Services
             {
                 entity.EntityId = topicSplit[3];
                 entity.State = message;
-                if (entity.EntityId.StartsWith("dark_sky"))
+                if (entity.EntityId == "dark_sky_summary" 
+                    || entity.EntityId.Contains("dark_sky_precip") && !entity.EntityId.Contains("probability"))
+                {
+                hub.InvokeAsync("OnIconUpdate", entity);
+                }
+                else if (entity.EntityId.StartsWith("dark_sky"))
                 {
                     hub.InvokeAsync("OnWeatherUpdate", entity);
                 }
@@ -80,16 +85,18 @@ namespace MagicMirror.Services
                     hub.InvokeAsync("OnDoorUpdate", entity);
                 }
             }
-            else if (topicSplit[4] == "friendly_name")
-            {
-                entity.EntityId = topicSplit[3];
-                entity.Attributes.FriendlyName = message;
-            }
-            else if (topicSplit[4] == "entity_picture")
-            {
-                entity.EntityId = topicSplit[3];
-                entity.Attributes.EntityPicture = message;
-            }
+            //else if (topicSplit[4] == "friendly_name")
+            //{
+            //    entity.EntityId = topicSplit[3];
+            //    entity.Attributes.FriendlyName = message;
+            //}
+            //else if (topicSplit[4] == "entity_picture")
+            //{
+            //    entity.EntityId = topicSplit[3];
+            //    entity.Message = message;
+            //    hub.InvokeAsync("OnIconUpdate", entity);
+
+            //}
         }
     }
 }

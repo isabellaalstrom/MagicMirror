@@ -1,7 +1,8 @@
 ﻿#calendar-section {
-    pre{
-    background-color: black;
-    color: white;
+    #calendar {
+        font-size: 20px;
+        .calendar-date {
+            font-size: 15px;
+        }
     }
-
 }

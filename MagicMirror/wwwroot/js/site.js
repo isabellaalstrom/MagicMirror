@@ -51,8 +51,14 @@ $(function () {
 
     let weatherDiv = $('#weather-section');
     hubConnection.on('OnWeatherUpdate', data => {
-        weatherDiv.find("#" + data.entity_id).text(data.state);
-        console.log(data.entity_id);
+
+            weatherDiv.find("#" + data.entity_id).text(data.state);
+            console.log(data.entity_id);
+        
+            //if (data.message != null) {
+            //    weatherDiv.find("#" + data.entity_id + "_icon").html(data.message);
+            //console.log(data.entity_id + "picture!");
+            //}
     });
     let doorsDiv = $('#doors');
     hubConnection.on('OnDoorUpdate', data => {
@@ -86,6 +92,13 @@ $(function() {
     weekday[5] = "Fri";
     weekday[6] = "Sat";
     weekday[7] = "Sun";
+    weekday[8] = "Mon";
+    weekday[9] = "Tue";
+    weekday[10] = "Wed";
+    weekday[11] = "Thu";
+    weekday[12] = "Fri";
+    weekday[13] = "Sat";
+    weekday[14] = "Sun";
 
     for (var i = 1; i <= 7; i++) {
         $("#day_"+i).text(weekday[currentDay + i]);

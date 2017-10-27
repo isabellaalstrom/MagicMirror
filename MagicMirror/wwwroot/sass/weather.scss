@@ -1,23 +1,29 @@
 ﻿#weather-section {
-    #current-temperature {
-        font-size: 60px;
-
-        #current-top {
-            font-size: 20px;
-        }
-
-        #current-right {
-            font-size: 20px;
-            /*padding-top:15px;*/
-        }
+    /*#current-temperature {
+        font-size: 60px;*/
+    #current-top {
+        font-size: 20px;
     }
 
+    #current-right {
+        font-size: 20px;
+        /*padding-top:15px;*/
+    }
+
+    #current-bottom {
+        font-size: 60px;
+    }
+    /*}*/
     #hourly-summary {
         font-size: 25px;
         margin-bottom: 20px;
         margin-top: 10px;
+        line-height: 40px;
     }
 
+    #dark_sky_summary_icon {
+
+    } 
     #forecast {
         font-size: 25px;
 
@@ -30,9 +36,13 @@
     #weather-week {
         /*margin-top: 30px;*/
         line-height: 40px;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        font-size: 20px;
     }
 
     .precip-probability {
         font-size: 20px;
+        padding-right: 0;
     }
 }

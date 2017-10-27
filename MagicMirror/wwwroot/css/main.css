@@ -14,35 +14,41 @@ body {
     font-weight: normal;
     }
 */
-#weather-section #current-temperature {
-  font-size: 60px; }
-  #weather-section #current-temperature #current-top {
+#weather-section {
+  /*#current-temperature {
+        font-size: 60px;*/
+  /*}*/ }
+  #weather-section #current-top {
     font-size: 20px; }
-  #weather-section #current-temperature #current-right {
+  #weather-section #current-right {
     font-size: 20px;
     /*padding-top:15px;*/ }
-
-#weather-section #hourly-summary {
-  font-size: 25px;
-  margin-bottom: 20px;
-  margin-top: 10px; }
-
-#weather-section #forecast {
-  font-size: 25px; }
-  #weather-section #forecast #city-forecast {
-    border-bottom: 1px solid grey;
+  #weather-section #current-bottom {
+    font-size: 60px; }
+  #weather-section #hourly-summary {
+    font-size: 25px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    line-height: 40px; }
+  #weather-section #forecast {
+    font-size: 25px; }
+    #weather-section #forecast #city-forecast {
+      border-bottom: 1px solid grey;
+      font-size: 20px; }
+  #weather-section #weather-week {
+    /*margin-top: 30px;*/
+    line-height: 40px;
+    margin-bottom: 20px;
+    margin-top: 10px;
     font-size: 20px; }
+  #weather-section .precip-probability {
+    font-size: 20px;
+    padding-right: 0; }
 
-#weather-section #weather-week {
-  /*margin-top: 30px;*/
-  line-height: 40px; }
-
-#weather-section .precip-probability {
+#calendar-section #calendar {
   font-size: 20px; }
-
-#calendar-section pre {
-  background-color: black;
-  color: white; }
+  #calendar-section #calendar .calendar-date {
+    font-size: 15px; }
 
 body {
   /*width: 1080px;
