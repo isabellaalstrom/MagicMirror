@@ -1,0 +1,38 @@
+﻿#weather-section {
+    #current-temperature {
+        font-size: 60px;
+
+        #current-top {
+            font-size: 20px;
+        }
+
+        #current-right {
+            font-size: 20px;
+            /*padding-top:15px;*/
+        }
+    }
+
+    #hourly-summary {
+        font-size: 25px;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    }
+
+    #forecast {
+        font-size: 25px;
+
+        #city-forecast {
+            border-bottom: 1px solid grey;
+            font-size: 20px;
+        }
+    }
+
+    #weather-week {
+        /*margin-top: 30px;*/
+        line-height: 40px;
+    }
+
+    .precip-probability {
+        font-size: 20px;
+    }
+}

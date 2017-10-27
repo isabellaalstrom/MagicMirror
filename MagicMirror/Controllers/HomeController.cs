@@ -7,6 +7,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MagicMirror.Models;
+using MagicMirror.Services;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
@@ -16,16 +17,18 @@ namespace MagicMirror.Controllers
 {
     public class HomeController : Controller
     {
-        public IConfiguration Configuration { get; set; }
+        private readonly MqttService _mqttService;
 
-        public HomeController(IConfiguration config)
+        public HomeController(MqttService mqttService)
         {
-            Configuration = config; //To use: Configuration["nameOfMySecret"]
+            _mqttService = mqttService;
         }
 
         public IActionResult Index()
         {
+            _mqttService.Subscribe();
             //GetEntityState("sensor.downstairs_litter_box_visits");
+            //var model = _mqttService.Entities;
             return View();
         }
 

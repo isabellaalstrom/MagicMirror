@@ -1,6 +1,6 @@
-﻿@model IEnumerable<HassEntity>
+﻿@*@model IEnumerable<HassEntity>*@
 
-<div>
+@*<div>
    
     @if (Model.Any(x => x.State.ToLower() == "open"))
     { 
@@ -38,4 +38,6 @@
         }
     }
 
-</div>
+</div>*@
+
+<div id="doors"></div>

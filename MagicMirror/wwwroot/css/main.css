@@ -1,45 +1,78 @@
-﻿@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed);
+﻿@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400);
 #dateTimeModule #time {
-  font-size: 130px; }
+  font-size: 120px; }
 
 #dateTimeModule #date {
   font-size: 40px; }
 
 body {
   font-family: "Roboto Condensed", serif;
-  font-weight: normal; }
+  font-weight: 300; }
 
 /*h1, h2, h3, h4, h5, h6 {
     font-family: $roboto-condensed;
     font-weight: normal;
     }
 */
+#weather-section #current-temperature {
+  font-size: 60px; }
+  #weather-section #current-temperature #current-top {
+    font-size: 20px; }
+  #weather-section #current-temperature #current-right {
+    font-size: 20px;
+    /*padding-top:15px;*/ }
+
+#weather-section #hourly-summary {
+  font-size: 25px;
+  margin-bottom: 20px;
+  margin-top: 10px; }
+
+#weather-section #forecast {
+  font-size: 25px; }
+  #weather-section #forecast #city-forecast {
+    border-bottom: 1px solid grey;
+    font-size: 20px; }
+
+#weather-section #weather-week {
+  /*margin-top: 30px;*/
+  line-height: 40px; }
+
+#weather-section .precip-probability {
+  font-size: 20px; }
+
+#calendar-section pre {
+  background-color: black;
+  color: white; }
+
 body {
   /*width: 1080px;
     height: 1920px;*/
   background-color: black;
   color: white;
   padding-top: 30px; }
+  body .container-fluid {
+    padding: 0; }
 
 #mirrorSection div {
   /*height: 300px;*/
   /*font-size: x-large;*/ }
 
 #mirrorSection #dateTimemodule {
-  height: 300px; }
+  /*height: 300px;*/ }
 
 #mirrorSection #currentWeatherModule {
-  height: 300px; }
+  /*height: 200px;*/
+  padding-bottom: 150px; }
 
 #mirrorSection #calendarModule {
-  height: 200px; }
-
-#mirrorSection #forecastModule {
-  height: 200px; }
+  /*height: 200px;*/ }
 
 #mirrorSection #trafficModule {
-  height: 200px; }
+  /*height: 200px;*/ }
 
 #mirrorSection #hassModule {
   /*height: 200px;*/ }
+
+#mirrorSection .no-gutters {
+  padding: 0; }
 

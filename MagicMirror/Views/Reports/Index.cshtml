@@ -1,0 +1,21 @@
+﻿@*<h2>Reports</h2>
+
+<ul id="doors"></ul>
+
+@section Scripts {
+    <script>
+        $(function () {
+
+            let hubUrl = 'http://localhost:65510/reportsPublisher';
+            let httpConnection = new signalR.HttpConnection(hubUrl);
+            let hubConnection = new signalR.HubConnection(httpConnection);
+
+            hubConnection.on('OnReportPublished', data => {
+                $('#doors').append($('<p>').text(data));
+            });
+
+            hubConnection.start();
+
+        });
+    </script>
+}*@

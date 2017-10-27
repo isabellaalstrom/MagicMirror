@@ -1,11 +1,17 @@
 ﻿@import "clock";
 @import "fonts";
+@import "weather";
+@import "calendar";
 body {
     /*width: 1080px;
     height: 1920px;*/
     background-color: black;
     color: white;
     padding-top:30px;
+    .container-fluid {
+        padding: 0;
+    }
+
 }
 
 #mirrorSection {
@@ -15,26 +21,27 @@ body {
     }
 
     #dateTimemodule {
-        height: 300px;
+        /*height: 300px;*/
     }
 
     #currentWeatherModule {
-        height: 300px;
+        /*height: 200px;*/
+        padding-bottom: 150px;
     }
 
     #calendarModule {
-        height: 200px;
-    }
-
-    #forecastModule {
-        height: 200px;
+        /*height: 200px;*/
     }
 
     #trafficModule {
-        height: 200px;
+        /*height: 200px;*/
     }
 
     #hassModule {
         /*height: 200px;*/
+    }
+
+    .no-gutters{
+        padding:0;
     }
 }

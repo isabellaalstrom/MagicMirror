@@ -9,7 +9,7 @@ namespace MagicMirror.Models
     public class HassEntity
     {
         [JsonProperty("attributes")]
-        public EntityAttribute Attributes { get; set; }
+        public EntityAttribute Attributes { get; set; } = new EntityAttribute();
         [JsonProperty("entity_id")]
         public string EntityId { get; set; }
         [JsonProperty("last_changed")]
@@ -28,5 +28,7 @@ namespace MagicMirror.Models
         public string FriendlyName { get; set; }
         [JsonProperty("entity_id")]
         public string[] EntityIds { get; set; }
+        [JsonProperty("entity_picture")]
+        public string EntityPicture { get; set; }
     }
 }

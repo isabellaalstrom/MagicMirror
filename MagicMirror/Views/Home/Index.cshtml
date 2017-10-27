@@ -1,23 +1,29 @@
-﻿<section id="mirrorSection">
+﻿@model List<HassEntity>
+    
+
+<section id="mirrorSection">
     <div id="leftSection" class="col-md-5">
         <div id="dateTimeModule">
             <span id="date"></span>
             <span id="time"></span>
-        </div> 
-        <div id="calendarModule" class=""><h2>Calendar Module</h2></div> 
+        </div>
+        <div id="calendarModule" class="">@await Component.InvokeAsync("GoogleCalendar")</div>
         <div id="todoListModule" class=""><h2>TODO-List Module</h2></div>
     </div>
 
-    <div id="rightSection" class="col-md-offset-4 col-md-3">
-        <div id="currentWeatherModule" class=""><h2>Current Weather Module</h2></div>
-        <div id="forecastModule" class=""><h2>Forecast Module</h2></div>
+    <div id="rightSection" class="col-md-offset-3 col-md-4">
+        <div id="currentWeatherModule" class="">@await Component.InvokeAsync("HassWeather")</div>
         <div id="trafficModule" class=""><h2>Traffic Module</h2></div>
     </div>
 
     <div id="bottomSection" class="navbar-fixed-bottom">
         <div id="hassModule" class="col-md-12">
             <div class="col-md-3">@await Component.InvokeAsync("HassDoors")</div>
-            <div class="col-md-3">@await Component.InvokeAsync("HassLights")</div>
+            @*<div class="col-md-3">@await Component.InvokeAsync("HassLights")</div>*@
+            @*<div>
+                    @foreach(var entity in Model)
+                    { <p>@entity.EntityId: @entity.State</p>}
+                </div>*@
         </div>
     </div>
 </section>

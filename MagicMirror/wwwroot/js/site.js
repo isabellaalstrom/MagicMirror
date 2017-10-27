@@ -7,7 +7,7 @@ function updateClock() {
     var currentSeconds = date.getSeconds();
     var currentDay = date.getDay();
     var currentDate = date.getDate();
-    var currentMonth = date.toLocaleString(locale, { month: "long" });
+    var currentMonth = date.toLocaleString(locale, { month: "short" });
     var currentYear = date.getFullYear();
 
     // Pad the minutes and seconds with leading zeros, if required
@@ -42,6 +42,104 @@ $(document).ready(function () {
 );
 
 
+//// DOORS FROM MQTT HUB
+//$(function () {
+
+//    let hubUrl = 'http://localhost:65510/reportsPublisher';
+//    let httpConnection = new signalR.HttpConnection(hubUrl);
+//    let hubConnection = new signalR.HubConnection(httpConnection);
+
+//    let doorsDiv = $('#doors');
+//    hubConnection.on('OnDoorUpdate', data => {
+//        if ($('#doors>p.' + data.entity_id).length !== 0) {
+//            $("." + data.entity_id).text(data.entity_id + ": " + data.state);
+//            console.log("if-state");
+//        } else {
+//            doorsDiv.prepend($('<p>').addClass(data.entity_id).text(data.entity_id + ": " + data.state));
+//            console.log("else-state");
+//        }
+//        if (data.state === "Open") {
+//            $('#doors>p.' + data.entity_id).addClass("text-danger").removeClass("text-success");
+//        } else {
+//            $('#doors>p.' + data.entity_id).addClass("text-success").removeClass("text-danger");
+//        }
+//    });
+//    hubConnection.start();
+//});
+
+// WEATHER FROM MQTT HUB
+$(function () {
+
+    let hubUrl = 'http://localhost:65510/reportsPublisher';
+    let httpConnection = new signalR.HttpConnection(hubUrl);
+    let hubConnection = new signalR.HubConnection(httpConnection);
+
+    let weatherDiv = $('#weather-section');
+    hubConnection.on('OnWeatherUpdate', data => {
+        weatherDiv.find("#" + data.entity_id).text(data.state);
+        console.log(data.entity_id);
+    });
+    let doorsDiv = $('#doors');
+    hubConnection.on('OnDoorUpdate', data => {
+        if ($('#doors>p.' + data.entity_id).length !== 0) {
+            $("." + data.entity_id).text(data.entity_id + ": " + data.state);
+            console.log("if-state");
+        } else {
+            doorsDiv.prepend($('<p>').addClass(data.entity_id).text(data.entity_id + ": " + data.state));
+            console.log("else-state");
+        }
+        if (data.state === "Open" || data.state === "Unknown" ) {
+            $('#doors>p.' + data.entity_id).addClass("text-danger").removeClass("text-success");
+        } else {
+            $('#doors>p.' + data.entity_id).addClass("text-success").removeClass("text-danger");
+        }
+    });
+    hubConnection.start();
+});
+
+// Upcoming week days for weather forecast
+$(function() {
+    var date = new Date(),
+        locale = "en-us";
+    var currentDay = date.getDay();
+
+    var weekday = new Array(7);
+    weekday[1] = "Mon";
+    weekday[2] = "Tue";
+    weekday[3] = "Wed";
+    weekday[4] = "Thu";
+    weekday[5] = "Fri";
+    weekday[6] = "Sat";
+    weekday[7] = "Sun";
+
+    for (var i = 1; i <= 7; i++) {
+        $("#day_"+i).text(weekday[currentDay + i]);
+    }
+});
+// FORCAST FROM MQTT HUB
+//$(function () {
+
+//    let hubUrl = 'http://localhost:65510/reportsPublisher';
+//    let httpConnection = new signalR.HttpConnection(hubUrl);
+//    let hubConnection = new signalR.HubConnection(httpConnection);
+
+//    let doorsDiv = $('#doors');
+//    hubConnection.on('OnForcastUpdate', data => {
+//        if ($('#doors>p.' + data.entity_id).length !== 0) {
+//            $("." + data.entity_id).text(data.entity_id + ": " + data.state);
+//            console.log("if-state");
+//        } else {
+//            doorsDiv.prepend($('<p>').addClass(data.entity_id).text(data.entity_id + ": " + data.state));
+//            console.log("else-state");
+//        }
+//        if (data.state === "Open") {
+//            $('#doors>p.' + data.entity_id).addClass("text-danger").removeClass("text-success");
+//        } else {
+//            $('#doors>p.' + data.entity_id).addClass("text-success").removeClass("text-danger");
+//        }
+//    });
+//    hubConnection.start();
+//});
 
 
 ////API TEST
