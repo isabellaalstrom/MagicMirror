@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace MagicMirror
 {
-    public class ReportsPublisher : Hub
+    public class SignalRHub : Hub
     {
         //public Task PublishReport(string reportName)
         //{

@@ -18,10 +18,10 @@ namespace MagicMirror.Services
     {
         public List<HassEntity> Entities = new List<HassEntity>();
 
-        private readonly IHubContext<ReportsPublisher> _hubContext;
+        private readonly IHubContext<SignalRHub> _hubContext;
         private readonly IConfiguration _configuration;
 
-        public MqttService(IConfiguration config, IHubContext<ReportsPublisher> hubContext)
+        public MqttService(IConfiguration config, IHubContext<SignalRHub> hubContext)
         {
             _configuration = config;
             _hubContext = hubContext;

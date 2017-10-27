@@ -68,7 +68,7 @@ namespace MagicMirror
             app.UseAuthentication();
             app.UseSignalR(routes => // &lt;-- SignalR
             {
-                routes.MapHub<ReportsPublisher>("reportsPublisher");
+                routes.MapHub<SignalRHub>("signalRHub");
             });
             app.UseMvc(routes =>
             {
