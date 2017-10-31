@@ -38,6 +38,8 @@ namespace MagicMirror
                 .AddDefaultTokenProviders();
             services.AddSignalR();
             services.AddTransient<MqttService>();
+            services.AddTransient<TrafficService>();
+            services.AddTransient<GCalendarService>();
             services.AddSingleton<IHassService, HassService>();
             services.AddSingleton<HttpClient>();
 
