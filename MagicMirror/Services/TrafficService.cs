@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using MagicMirror.Extensions;
+using MagicMirror.Models;
+using MagicMirror.Models.TrafficModels;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
@@ -11,28 +14,37 @@ namespace MagicMirror.Services
     public class TrafficService
     {
         private readonly IConfiguration _configuration;
+        private const string baseUrl = "http://api.sl.se";
 
+        private readonly HttpClient _client;
         public TrafficService(IConfiguration config)
         {
             _configuration = config;
+            _client = new HttpClient { BaseAddress = new Uri(baseUrl) };
+
         }
         private string SlRealTimeApiKey => _configuration["SlRealTimeApiKey"];
 
-        public async void GetRealTimeFisksatra()
+        public async Task<List<Transport>> GetRealTimeFisksatra()
         {
-            using (var client = new HttpClient())
+            try
             {
-                var uri = new Uri($"http://api.sl.se/api2/realtimedeparturesV4.json?key={SlRealTimeApiKey}&siteid=9424&timewindow=60&BUS=false");
+                var response = await _client.GetAsync(
+                    $"/api2/realtimedeparturesV4.json?key={SlRealTimeApiKey}&siteid=9424&timewindow=60");
+                var res = await response.DeserializeResultAsync<TrafficResponse>();
 
-                var response = await client.GetAsync(uri);
+                var trams = res.ResponseData.Trams.Where(x => x.JourneyDirection == 2);
+                var buses = res.ResponseData.Buses.Where(x => x.JourneyDirection == 2);
 
-                string textResult = await response.Content.ReadAsStringAsync();
-                //var des = (Response)JsonConvert.DeserializeObject(textResult, typeof(Response));
-
-
-                //var metros = des.ResponseData.Metros.Where(x => x.JourneyDirection == 1)
-                //    .OrderBy(x => x.TimeTabledDateTime).ToList();
-                //Clients.Caller.setMetro(des);
+                var transports = new List<Transport>();
+                transports.AddRange(trams);
+                transports.AddRange(buses);
+                return transports.OrderBy(x => x.TimeTabledDateTime).ToList();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
             }
         }
     }

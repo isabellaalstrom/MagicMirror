@@ -25,8 +25,6 @@ namespace MagicMirror.Services
         {
             _configuration = config;
             _client = new HttpClient {BaseAddress = new Uri(baseUrl)};
-
-            //To use: Configuration["nameOfMySecret
         }
 
         private string ApiPassword => _configuration["ApiPassword"];

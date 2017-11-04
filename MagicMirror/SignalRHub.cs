@@ -1,13 +1,41 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using DarkSky.Services;
+using MagicMirror.Services;
 using Microsoft.AspNetCore.SignalR;
+using Newtonsoft.Json;
 
 namespace MagicMirror
 {
     public class SignalRHub : Hub
     {
-        //public Task PublishReport(string reportName)
-        //{
-        //    return Clients.All.InvokeAsync("OnReportPublished", reportName);
-        //}
+        private readonly TrafficService _trafficService;
+        private readonly DarkSkyService _forecastService;
+
+
+        public SignalRHub(TrafficService trafficService, DarkSkyService forecastService)
+        {
+            _trafficService = trafficService;
+            _forecastService = forecastService;
+        }
+        public async Task GetTransports()
+        {
+            var transports = await _trafficService.GetRealTimeFisksatra();
+
+            await Clients.All.InvokeAsync("setTransports", transports);
+        }
+
+        public async Task GetForecast()
+        {
+            var forecast = _forecastService.GetForecast(59.2924, 18.2455).Result.Response;
+
+            //var current = forecast.Currently;
+            //var minutely = forecast.Minutely;
+            //var hourly = forecast.Hourly;
+            //var daily = forecast.Daily;
+            await Clients.All.InvokeAsync()
+        }
     }
 }

@@ -14,6 +14,7 @@ using MagicMirror.Models;
 using MagicMirror.Services;
 using Microsoft.AspNetCore.SignalR.Infrastructure;
 using Microsoft.AspNetCore.Sockets;
+using DarkSky.Services;
 
 namespace MagicMirror
 {
@@ -40,6 +41,7 @@ namespace MagicMirror
             services.AddTransient<MqttService>();
             services.AddTransient<TrafficService>();
             services.AddTransient<GCalendarService>();
+            services.AddTransient(s => new DarkSkyService(Configuration["DarkSkyApiKey"]));
             services.AddSingleton<IHassService, HassService>();
             services.AddSingleton<HttpClient>();
 
