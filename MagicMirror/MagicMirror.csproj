@@ -33,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Desktop\darksky\dark-sky-core-master\src\DarkSkyCore\DarkSkyCore.csproj" />
+    <ProjectReference Include="..\DarkSkyCore\DarkSkyCore.csproj" />
   </ItemGroup>
 
 </Project>

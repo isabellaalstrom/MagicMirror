@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MagicMirror", "MagicMirror\MagicMirror.csproj", "{7CA6816F-F08A-426F-98BB-EED736C78C75}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkSkyCore", "..\..\Desktop\darksky\dark-sky-core-master\src\DarkSkyCore\DarkSkyCore.csproj", "{39E1AD2B-3D0C-465E-8789-0AE8212CDB7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DarkSkyCore", "DarkSkyCore\DarkSkyCore.csproj", "{8373EDA5-F43C-4112-A061-16AD5B72AEE0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{7CA6816F-F08A-426F-98BB-EED736C78C75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CA6816F-F08A-426F-98BB-EED736C78C75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CA6816F-F08A-426F-98BB-EED736C78C75}.Release|Any CPU.Build.0 = Release|Any CPU
-		{39E1AD2B-3D0C-465E-8789-0AE8212CDB7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39E1AD2B-3D0C-465E-8789-0AE8212CDB7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39E1AD2B-3D0C-465E-8789-0AE8212CDB7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39E1AD2B-3D0C-465E-8789-0AE8212CDB7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8373EDA5-F43C-4112-A061-16AD5B72AEE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8373EDA5-F43C-4112-A061-16AD5B72AEE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8373EDA5-F43C-4112-A061-16AD5B72AEE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8373EDA5-F43C-4112-A061-16AD5B72AEE0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

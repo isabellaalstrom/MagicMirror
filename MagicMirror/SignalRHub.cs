@@ -35,7 +35,7 @@ namespace MagicMirror
             //var minutely = forecast.Minutely;
             //var hourly = forecast.Hourly;
             //var daily = forecast.Daily;
-            await Clients.All.InvokeAsync()
+            //await Clients.All.InvokeAsync();
         }
     }
 }
