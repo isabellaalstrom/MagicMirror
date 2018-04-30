@@ -11,13 +11,13 @@ using Newtonsoft.Json;
 
 namespace MagicMirror.Services
 {
-    public class TrafficService
+    public class SlService : ITrafficService
     {
         private readonly IConfiguration _configuration;
         private const string baseUrl = "http://api.sl.se";
 
         private readonly HttpClient _client;
-        public TrafficService(IConfiguration config)
+        public SlService(IConfiguration config)
         {
             _configuration = config;
             _client = new HttpClient { BaseAddress = new Uri(baseUrl) };
@@ -25,7 +25,7 @@ namespace MagicMirror.Services
         }
         private string SlRealTimeApiKey => _configuration["SlRealTimeApiKey"];
 
-        public async Task<List<Transport>> GetRealTimeFisksatra()
+        public async Task<List<Transport>> GetRealTime(string siteId)
         {
             try
             {

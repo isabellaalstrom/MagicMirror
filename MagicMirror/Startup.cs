@@ -39,13 +39,12 @@ namespace MagicMirror
                 .AddDefaultTokenProviders();
             services.AddSignalR();
             services.AddTransient<MqttService>();
-            services.AddTransient<TrafficService>();
+            services.AddTransient<SlService>();
             services.AddTransient<GCalendarService>();
             services.AddTransient(s => new DarkSkyService(Configuration["DarkSkyApiKey"]));
             services.AddSingleton<IHassService, HassService>();
+            services.AddSingleton<ITrafficService, SlService>();
             services.AddSingleton<HttpClient>();
-
-            // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
             services.AddMvc();

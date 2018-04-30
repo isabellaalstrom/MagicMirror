@@ -11,9 +11,9 @@ namespace MagicMirror.Components
 {
     public class TrafficViewComponent : ViewComponent
     {
-        private readonly TrafficService _service;
+        private readonly SlService _service;
 
-        public TrafficViewComponent(TrafficService service)
+        public TrafficViewComponent(SlService service)
         {
             _service = service;
         }

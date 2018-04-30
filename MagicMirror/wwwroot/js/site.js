@@ -87,10 +87,10 @@ $(function () {
             }
         });
 
-    hubConnection.on('setTransports',
-        function(data) {
-            //Set forecast in divs and spans
-        });
+    //hubConnection.on('setTransports',
+    //    function(data) {
+    //        //Set forecast in divs and spans
+    //    });
 
     $("#getTraffic").click(function() {
         hubConnection.invoke("GetTransports");

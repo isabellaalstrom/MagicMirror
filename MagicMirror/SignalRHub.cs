@@ -11,18 +11,18 @@ namespace MagicMirror
 {
     public class SignalRHub : Hub
     {
-        private readonly TrafficService _trafficService;
+        private readonly SlService _trafficService;
         private readonly DarkSkyService _forecastService;
 
 
-        public SignalRHub(TrafficService trafficService, DarkSkyService forecastService)
+        public SignalRHub(SlService trafficService, DarkSkyService forecastService)
         {
             _trafficService = trafficService;
             _forecastService = forecastService;
         }
         public async Task GetTransports()
         {
-            var transports = await _trafficService.GetRealTimeFisksatra();
+            var transports = await _trafficService.GetRealTime("");
 
             await Clients.All.InvokeAsync("setTransports", transports);
         }
@@ -35,7 +35,7 @@ namespace MagicMirror
             //var minutely = forecast.Minutely;
             //var hourly = forecast.Hourly;
             //var daily = forecast.Daily;
-            //await Clients.All.InvokeAsync();
+            await Clients.All.InvokeAsync("OnWeatherUpdate", forecast);
         }
     }
 }
