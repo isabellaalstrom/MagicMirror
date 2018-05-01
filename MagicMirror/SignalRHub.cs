@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using DarkSky.Services;
+using MagicMirror.Models;
 using MagicMirror.Services;
 using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
@@ -36,6 +37,11 @@ namespace MagicMirror
             //var hourly = forecast.Hourly;
             //var daily = forecast.Daily;
             await Clients.All.InvokeAsync("OnWeatherUpdate", forecast);
+        }
+
+        public async Task SendHassEntitiesToView(HassEntity entity)
+        {
+            await Clients.All.InvokeAsync("OnEntityUpdate", entity);
         }
     }
 }

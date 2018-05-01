@@ -61,6 +61,18 @@ $(function () {
             //console.log(data.entity_id + "picture!");
             //}
         });
+    hubConnection.on('OnEntityUpdate',
+        data => {
+            let hassDiv = $('#hassTest');
+
+            hassDiv.text(data.entity_id + ": " + data.state);
+            console.log(data.entity_id);
+
+            //if (data.message != null) {
+            //    weatherDiv.find("#" + data.entity_id + "_icon").html(data.message);
+            //console.log(data.entity_id + "picture!");
+            //}
+        });
     let doorsDiv = $('#doors');
     hubConnection.on('OnDoorUpdate',
         data => {

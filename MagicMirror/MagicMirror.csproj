@@ -19,6 +19,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" PrivateAssets="All" />
+    <PackageReference Include="websocketsharp.core" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +35,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DarkSkyCore\DarkSkyCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Data\entities.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

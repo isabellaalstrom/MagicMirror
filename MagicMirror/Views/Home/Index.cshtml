@@ -7,18 +7,19 @@
             <span id="date"></span>
             <span id="time"></span>
         </div>
-        <div id="calendarModule" class="">@await Component.InvokeAsync("GoogleCalendar")</div>
+        @*<div id="calendarModule" class="">@await Component.InvokeAsync("GoogleCalendar")</div>*@
         <div id="todoListModule" class=""><h2>TODO-List Module</h2></div>
+        <div class="col-md-3">@await Component.InvokeAsync("Hass")</div>
+
     </div>
 
     <div id="rightSection" class="col-md-offset-3 col-md-4">
         <div id="currentWeatherModule" class="">@await Component.InvokeAsync("HassWeather")</div>
         <div id="trafficModule" class="">@await Component.InvokeAsync("Traffic")</div>
-    </div>
+        </div>
 
     <div id="bottomSection" class="navbar-fixed-bottom">
         <div id="hassModule" class="col-md-12">
-            <div class="col-md-3">@await Component.InvokeAsync("HassDoors")</div>
             @*<div class="col-md-3">@await Component.InvokeAsync("HassLights")</div>*@
             @*<div>
                     @foreach(var entity in Model)

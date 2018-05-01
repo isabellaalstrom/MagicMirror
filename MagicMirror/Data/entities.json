@@ -1,0 +1,6 @@
+﻿{
+  "entities": [
+    "input_boolean.test",
+    "input_boolean.guest_mode"
+  ]
+}
