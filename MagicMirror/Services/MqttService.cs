@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using MagicMirror.Data;
 using MagicMirror.Models;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Configuration;
@@ -19,17 +20,22 @@ namespace MagicMirror.Services
         public List<HassEntity> Entities = new List<HassEntity>();
 
         private readonly IHubContext<SignalRHub> _hubContext;
+        private readonly ICredentialsRepository _credentialsRepo;
         private readonly IConfiguration _configuration;
 
-        public MqttService(IConfiguration config, IHubContext<SignalRHub> hubContext)
+        public MqttService(IConfiguration config, IHubContext<SignalRHub> hubContext, ICredentialsRepository credentialsRepo)
         {
             _configuration = config;
             _hubContext = hubContext;
+            _credentialsRepo = credentialsRepo;
         }
 
-        private string MqttBroker => _configuration["MqttBroker"];
-        private string Username => _configuration["MqttUsername"];
-        private string Password => _configuration["MqttPassword"];
+        //private string MqttBroker => _configuration["MqttBroker"];
+        //private string Username => _configuration["MqttUsername"];
+        //private string Password => _configuration["MqttPassword"];
+        private string MqttBroker => _credentialsRepo.GetMqttBroker();
+        private string Username => _credentialsRepo.GetMqttUsername();
+        private string Password => _credentialsRepo.GetMqttPassword();
 
         public void Subscribe()
         {

@@ -261,3 +261,4 @@ paket-files/
 __pycache__/
 *.pyc
 /MagicMirror/client_secret.json
+/MagicMirror/Data/credentials.json

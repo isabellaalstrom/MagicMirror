@@ -1,0 +1,7 @@
+﻿body {
+  background-color: white; }
+  body nav {
+    background-color: white; }
+  body #entities-nav {
+    position: fixed; }
+

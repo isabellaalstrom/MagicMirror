@@ -1,0 +1,24 @@
+﻿@model MagicMirror.Models.AdminModels.Settings
+
+@{
+    Layout = "_AdminLayout";
+}
+<h1>Settings</h1>
+<h3>Tracked entities</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Entity id</th>
+            <th>Friendly name</th>
+            <th>Last known state</th>
+        </tr>
+    </thead>
+    @foreach (var entity in Model.EntitiesToTrack)
+    {
+    <tr>
+        <td>@entity.EntityId</td>
+        <td>@entity.Attributes.FriendlyName</td>
+        <td>@entity.State</td>
+    </tr>
+    }
+</table>

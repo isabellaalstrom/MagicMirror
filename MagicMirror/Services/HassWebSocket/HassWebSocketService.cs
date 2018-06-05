@@ -28,20 +28,26 @@ namespace MagicMirror.Services.HassWebSocket
         private WebSocket _ws;
         private IRepository _repo;
         private readonly IConfiguration _configuration;
+        private readonly ICredentialsRepository _credentialsRepo;
 
 
         public HashSet<string> EncounteredEntityIdsWithoutSubscription { get; set; } = new HashSet<string>();
         private bool _started;
         private readonly SignalRHub _hub;
+        private readonly List<HassEntity> _entities;
 
-        private string HassWebsocketUri => _configuration["HassWebsocketUri"];
-        private string ApiPasswordQuery => _configuration["ApiPasswordQuery"];
+        //private string HassWebsocketUri => _configuration["HassWebsocketUri"];
+        private string HassWebsocketUri => $"ws://{_credentialsRepo.GetHassBaseUrl()}/api/websocket";
+        //private string ApiPasswordQuery => _configuration["ApiPasswordQuery"];
+        private string ApiPasswordQuery => $"?api_password={_credentialsRepo.GetHassPassword()}"; //?api_password={password}
 
-        public HassWebSocketService(IRepository repo, SignalRHub hub, IConfiguration config)
+        public HassWebSocketService(IRepository repo, SignalRHub hub, IConfiguration config, ICredentialsRepository credentialsRepo)
         {
             _repo = repo;
             _hub = hub;
             _configuration = config;
+            _credentialsRepo = credentialsRepo;
+            _entities = _repo.GetEntities();
         }
 
         public void Start()
@@ -132,9 +138,7 @@ namespace MagicMirror.Services.HassWebSocket
 
             if (json.IsStateChangeEvent())
             {
-                var entities = _repo.GetEntities();
-
-                if (entities.Contains(entId))
+                if (_entities.Any(x=>x.EntityId == entId && x.SelectedEntity))
                 {
                     if (!json.HasNewState())
                         return;
@@ -147,11 +151,9 @@ namespace MagicMirror.Services.HassWebSocket
                         (rawGraph.@event.data.new_state ?? rawGraph.@event.data.old_state ?? new StateRaw()).attributes
                         .ToString());
                     eventData.StateChangeData = stateChange;
-                    var hassEntity = new HassEntity
-                    {
-                        EntityId = entId,
-                        State = stateChange.NewState
-                    };
+
+                    var hassEntity = _repo.GetEntity(entId);
+                    hassEntity.State = stateChange.NewState;
                     await _hub.SendHassEntitiesToView(hassEntity);
                 }
             }

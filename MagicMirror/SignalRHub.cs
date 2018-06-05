@@ -3,6 +3,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using DarkSky.Services;
+using MagicMirror.Data;
 using MagicMirror.Models;
 using MagicMirror.Services;
 using Microsoft.AspNetCore.SignalR;
@@ -13,13 +14,15 @@ namespace MagicMirror
     public class SignalRHub : Hub
     {
         private readonly SlService _trafficService;
+        private readonly ICredentialsRepository _credentialsRepo;
         private readonly DarkSkyService _forecastService;
 
 
-        public SignalRHub(SlService trafficService, DarkSkyService forecastService)
+        public SignalRHub(SlService trafficService, ICredentialsRepository credentialsRepo)
         {
             _trafficService = trafficService;
-            _forecastService = forecastService;
+            _credentialsRepo = credentialsRepo;
+            _forecastService = new DarkSkyService(_credentialsRepo.GetDarkSkyApiKey());
         }
         public async Task GetTransports()
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using MagicMirror.Data;
 using MagicMirror.Extensions;
 using MagicMirror.Models;
 using MagicMirror.Models.TrafficModels;
@@ -14,16 +15,21 @@ namespace MagicMirror.Services
     public class SlService : ITrafficService
     {
         private readonly IConfiguration _configuration;
+        private readonly IRepository _repo;
+        private readonly ICredentialsRepository _credentialsRepo;
         private const string baseUrl = "http://api.sl.se";
 
         private readonly HttpClient _client;
-        public SlService(IConfiguration config)
+        public SlService(IConfiguration config, IRepository repo, ICredentialsRepository credentialsRepo)
         {
             _configuration = config;
+            _repo = repo;
+            _credentialsRepo = credentialsRepo;
             _client = new HttpClient { BaseAddress = new Uri(baseUrl) };
 
         }
-        private string SlRealTimeApiKey => _configuration["SlRealTimeApiKey"];
+        //private string SlRealTimeApiKey => _configuration["SlRealTimeApiKey"];
+        private string SlRealTimeApiKey => _credentialsRepo.GetSlRealTimeApiKey();
 
         public async Task<List<Transport>> GetRealTime(string siteId)
         {

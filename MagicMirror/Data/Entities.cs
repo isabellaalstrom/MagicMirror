@@ -9,6 +9,6 @@ namespace MagicMirror.Data
     public class RootObject
     {
         [JsonProperty("entities")]
-        public List<string> Entities { get; set; }
+        public Dictionary<string, string> Entities { get; set; }
     }
 }

@@ -1,0 +1,179 @@
+﻿@model List<HassEntity>
+@{
+    Layout = "_AdminLayout";
+}
+<div class="row">
+    <div class="col-sm-3">@await Html.PartialAsync("_EntitiesNav")</div>
+    <div class="col-sm-9">
+        <form asp-controller="Admin" asp-action="ChooseEntities" method="post" role="form">
+            <a name="top"></a><input type="submit" value="submit" class="btn btn-default" />
+
+            <div class="">
+                <h2><a name="alarm-control-panel"></a>Alarm control panels</h2>
+                @foreach (var entity in Model.Where(x => x.EntityId.StartsWith("alarm_control_panel.")).OrderBy(x => x.EntityId))
+            {
+                <div class="form-group">
+                    <input asp-for="@entity.SelectedEntity" type="checkbox" value="@entity.SelectedEntity" name="hass-@entity.EntityId" />
+                    <label asp-for="@entity.EntityId">@entity.EntityId - @entity.Attributes.FriendlyName</label>
+                    <input asp-for="@entity" type="hidden" />
+                </div>
+        }
+
+                <h2><a name="binary-sensor"></a>Binary sensors</h2>
+                @foreach (var entity in Model.Where(x => x.EntityId.StartsWith("binary_sensor.")).OrderBy(x => x.EntityId))
+            {
+                <div class="form-group">
+                    <input asp-for="@entity.SelectedEntity" type="checkbox" value="@entity.SelectedEntity" name="hass-@entity.EntityId" />
+                    <label asp-for="@entity.EntityId">@entity.EntityId - @entity.Attributes.FriendlyName</label>
+                    <input asp-for="@entity" type="hidden" />
+                </div>
+        }
+
+                <h2><a name="counter"></a>Counters</h2>
+                @foreach (var entity in Model.Where(x => x.EntityId.StartsWith("counter.")).OrderBy(x => x.EntityId))
+            {
+                <div class="form-group">
+                    <input asp-for="@entity.SelectedEntity" type="checkbox" value="@entity.SelectedEntity" name="hass-@entity.EntityId" />
+                    <label asp-for="@entity.EntityId">@entity.EntityId - @entity.Attributes.FriendlyName</label>
+                    <input asp-for="@entity" type="hidden" />
+                </div>
+        }
+
+                <h2><a name="input-boolean"></a>Input booleans</h2>
+                @foreach (var entity in Model.Where(x => x.EntityId.StartsWith("input_boolean.")).OrderBy(x => x.EntityId))
+            {
+                <div class="form-group">
+                    <input asp-for="@entity.SelectedEntity" type="checkbox" value="@entity.SelectedEntity" name="hass-@entity.EntityId" />
+                    <label asp-for="@entity.EntityId">@entity.EntityId - @entity.Attributes.FriendlyName</label>
+                    <input asp-for="@entity" type="hidden" />
+                </div>
+        }
+
+                <h2><a name="input-select"></a>Input select</h2>
+                @foreach (var entity in Model.Where(x => x.EntityId.StartsWith("input_select.")).OrderBy(x => x.EntityId))
+            {
+                <div class="form-group">
+                    <input asp-for="@entity.SelectedEntity" type="checkbox" value="@entity.SelectedEntity" name="hass-@entity.EntityId" />
+                    <label asp-for="@entity.EntityId">@entity.EntityId - @entity.Attributes.FriendlyName</label>
+                    <input asp-for="@entity" type="hidden" />
+                </div>
+        }
+
+                <h2><a name="light"></a>Lights</h2>
+                @foreach (var entity in Model.Where(x => x.EntityId.StartsWith("light.")).OrderBy(x => x.EntityId))
+            {
+                <div class="form-group">
+                    <input asp-for="@entity.SelectedEntity" type="checkbox" value="@entity.SelectedEntity" name="hass-@entity.EntityId" />
+                    <label asp-for="@entity.EntityId">@entity.EntityId - @entity.Attributes.FriendlyName</label>
+                    <input asp-for="@entity" type="hidden" />
+                </div>
+        }
+
+                <h2><a name="lock"></a>Locks</h2>
+                @foreach (var entity in Model.Where(x => x.EntityId.StartsWith("lock.")).OrderBy(x => x.EntityId))
+            {
+                <div class="form-group">
+                    <input asp-for="@entity.SelectedEntity" type="checkbox" value="@entity.SelectedEntity" name="hass-@entity.EntityId" />
+                    <label asp-for="@entity.EntityId">@entity.EntityId - @entity.Attributes.FriendlyName</label>
+                    <input asp-for="@entity" type="hidden" />
+                </div>
+        }
+
+                <h2><a name="media-player"></a>Media players</h2>
+                @foreach (var entity in Model.Where(x => x.EntityId.StartsWith("media_player.")).OrderBy(x => x.EntityId))
+            {
+                <div class="form-group">
+                    <input asp-for="@entity.SelectedEntity" type="checkbox" value="@entity.SelectedEntity" name="hass-@entity.EntityId" />
+                    <label asp-for="@entity.EntityId">@entity.EntityId - @entity.Attributes.FriendlyName</label>
+                    <input asp-for="@entity" type="hidden" />
+                </div>
+        }
+
+                <h2><a name="scene"></a>Scenes</h2>
+                @foreach (var entity in Model.Where(x => x.EntityId.StartsWith("scene.")).OrderBy(x => x.EntityId))
+            {
+                <div class="form-group">
+                    <input asp-for="@entity.SelectedEntity" type="checkbox" value="@entity.SelectedEntity" name="hass-@entity.EntityId" />
+                    <label asp-for="@entity.EntityId">@entity.EntityId - @entity.Attributes.FriendlyName</label>
+                    <input asp-for="@entity" type="hidden" />
+                </div>
+        }
+
+                <h2><a name="script"></a>Scripts</h2>
+                @foreach (var entity in Model.Where(x => x.EntityId.StartsWith("script.")).OrderBy(x => x.EntityId))
+            {
+                <div class="form-group">
+                    <input asp-for="@entity.SelectedEntity" type="checkbox" value="@entity.SelectedEntity" name="hass-@entity.EntityId" />
+                    <label asp-for="@entity.EntityId">@entity.EntityId - @entity.Attributes.FriendlyName</label>
+                    <input asp-for="@entity" type="hidden" />
+                </div>
+        }
+
+                <h2><a name="sensor"></a>Sensors</h2>
+                @foreach (var entity in Model.Where(x => x.EntityId.StartsWith("sensor.")).OrderBy(x => x.EntityId))
+            {
+                <div class="form-group">
+                    <input asp-for="@entity.SelectedEntity" type="checkbox" value="@entity.SelectedEntity" name="hass-@entity.EntityId" />
+                    <label asp-for="@entity.EntityId">@entity.EntityId - @entity.Attributes.FriendlyName</label>
+                    <input asp-for="@entity" type="hidden" />
+                </div>
+        }
+
+                <h2><a name="switch"></a>Switches</h2>
+                @foreach (var entity in Model.Where(x => x.EntityId.StartsWith("switch.")).OrderBy(x => x.EntityId))
+            {
+                <div class="form-group">
+                    <input asp-for="@entity.SelectedEntity" type="checkbox" value="@entity.SelectedEntity" name="hass-@entity.EntityId" />
+                    <label asp-for="@entity.EntityId">@entity.EntityId - @entity.Attributes.FriendlyName</label>
+                    <input asp-for="@entity" type="hidden" />
+                </div>
+        }
+
+                <h2><a name="automation"></a>Automations</h2>
+                @foreach (var entity in Model.Where(x => x.EntityId.StartsWith("automation.")).OrderBy(x => x.EntityId))
+            {
+                <div class="form-group">
+                    <input asp-for="@entity.SelectedEntity" type="checkbox" value="@entity.SelectedEntity" name="hass-@entity.EntityId" />
+                    <label asp-for="@entity.EntityId">@entity.EntityId - @entity.Attributes.FriendlyName</label>
+                    <input asp-for="@entity" type="hidden" />
+                </div>
+        }
+
+                <h2><a name="alert"></a>Alerts</h2>
+                @foreach (var entity in Model.Where(x => x.EntityId.StartsWith("alert.")).OrderBy(x => x.EntityId))
+            {
+                <div class="form-group">
+                    <input asp-for="@entity.SelectedEntity" type="checkbox" value="@entity.SelectedEntity" name="hass-@entity.EntityId" />
+                    <label asp-for="@entity.EntityId">@entity.EntityId - @entity.Attributes.FriendlyName</label>
+                    <input asp-for="@entity" type="hidden" />
+                </div>
+        }
+
+                <h2><a name="other"></a>Other</h2>
+                @foreach (var entity in Model.Where(x => !x.EntityId.StartsWith("alarm_control_panel.")
+                                                 && !x.EntityId.StartsWith("binary_sensor.")
+                                                 && !x.EntityId.StartsWith("counter.")
+            && !x.EntityId.StartsWith("input_boolean.")
+            && !x.EntityId.StartsWith("input_select.")
+            && !x.EntityId.StartsWith("light.")
+            && !x.EntityId.StartsWith("light.")
+            && !x.EntityId.StartsWith("lock.")
+            && !x.EntityId.StartsWith("media_player.")
+            && !x.EntityId.StartsWith("scene.")
+            && !x.EntityId.StartsWith("script.")
+            && !x.EntityId.StartsWith("sensor.")
+            && !x.EntityId.StartsWith("switch.")
+            && !x.EntityId.StartsWith("automation.")
+            && !x.EntityId.StartsWith("alert.")).OrderBy(x => x.EntityId))
+            {
+                <div class="form-group">
+                    <input asp-for="@entity.SelectedEntity" type="checkbox" value="@entity.SelectedEntity" name="hass-@entity.EntityId" />
+                    <label asp-for="@entity.EntityId">@entity.EntityId - @entity.Attributes.FriendlyName</label>
+                    <input asp-for="@entity" type="hidden" />
+                </div>
+        }
+            </div>
+            <div class="form-group"><input type="submit" value="submit" class="btn btn-default" /></div>
+        </form>
+    </div>
+</div>

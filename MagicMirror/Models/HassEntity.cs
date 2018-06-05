@@ -20,6 +20,8 @@ namespace MagicMirror.Models
         public string State { get; set; }
         [JsonProperty("message")]
         public string Message { get; set; }
+
+        public bool SelectedEntity { get; set; }
     }
 
     public class EntityAttribute

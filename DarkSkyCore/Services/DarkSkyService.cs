@@ -27,10 +27,10 @@
 		/// </param>
 		public DarkSkyService(string apiKey, IHttpClient httpClient = null)
 		{
-			if (string.IsNullOrWhiteSpace(apiKey))
-			{
-				throw new ArgumentException($"{nameof(apiKey)} cannot be empty.");
-			}
+			////if (string.IsNullOrWhiteSpace(apiKey))
+			////{
+			////	throw new ArgumentException($"{nameof(apiKey)} cannot be empty.");
+			////}
 
 			this.apiKey = apiKey;
 			this.httpClient = httpClient ?? new ZipHttpClient("https://api.darksky.net/");

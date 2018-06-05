@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using MagicMirror.Data;
 using MagicMirror.Extensions;
 using MagicMirror.Models;
 using Microsoft.Extensions.Configuration;
@@ -15,20 +16,21 @@ namespace MagicMirror.Services
 {
     public class HassService : IHassService
     {
-        private const string baseUrl = "http://grimsan.servebeer.com:8123";
 
         private readonly HttpClient _client;
         private readonly IConfiguration _configuration;
+        private readonly ICredentialsRepository _credentialsRepo;
 
 
-        public HassService(IConfiguration config)
+        public HassService(IConfiguration config, ICredentialsRepository credentialsRepo)
         {
             _configuration = config;
-            _client = new HttpClient {BaseAddress = new Uri(baseUrl)};
+            _credentialsRepo = credentialsRepo;
+            _client = new HttpClient {BaseAddress = new Uri(HassBaseUrl)};
         }
 
-        private string ApiPassword => _configuration["ApiPassword"];
-
+        private string ApiPassword => _credentialsRepo.GetHassPassword();
+        private string HassBaseUrl => $"http://{_credentialsRepo.GetHassBaseUrl()}/";
 
         public async Task<HassEntity> GetEntityStateAsync(string entityId)
         {
